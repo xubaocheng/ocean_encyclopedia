@@ -1,24 +1,14 @@
 import Mock from 'mockjs'
 
 const Random = Mock.Random
-//获取首页图书模块
-export const getBookInfo = (options) => {
+//获取推荐词条
+export const recommendedEntry = (options) => {
 	const template = {
 		code: 200,
 		data: {
-			pageIndex: 1,
-			pageSize: 8,
-			total: 4444,
-			totalRecords: 66666,
-			'list|8': [
+			'list|6': [
 				{
-					book_cover_img:Random.dataImage('170x200','bookCover'),
-					book_cover_name: '@ctitle(3,8)',
-					book_cover_author:'@cname',
-					book_cover_briefly:'@ctitle(60,90)',
-					book_periodical:'@date("yyyy")'+'年出版',
-					'book_id|+1':1,
-					'book_number|1000-10000':999
+					name: '@ctitle(3,6)',
 				}
 			]
 		},
@@ -26,23 +16,41 @@ export const getBookInfo = (options) => {
 	}
 	return Mock.mock(template)
 }
-//获取首页论文书刊模块
-export const getPaperInfo = (option) => {
+//获取推荐问答
+export const recommendedQandA = (option) => {
+    let pageIndex = JSON.parse(option.body).pageIndex
+    let pageSize = JSON.parse(option.body).pageSize
 	const template = {
 		code: 200,
 		data: {
-			pageIndex: 1,
-			pageSize: 20,
+			pageIndex: pageIndex,
+			pageSize: pageSize,
 			total: 4444,
 			totalRecords: 66666,
-			'list|20': [
+			list: () => {
+                let arr = []
+                for( let i = 0; i< pageSize; i++){
+                    arr.push(
+                        Mock.mock({
+                            "content": "@csentence(20,40)"
+                        })
+                    )
+                }
+                return arr
+            }
+        },
+		message: "Success"
+	}
+	return Mock.mock(template)
+}
+//获取热词
+export const hotword = (option) => {
+	const template = {
+		code: 200,
+		data: {
+			'list|6': [
 				{
-					paper_title:'@ctitle(20,90)',
-					paper_name: '《@ctitle(3,8)》',
-					paper_author:'@cname',
-					paper_periodical:'@date("yyyy")'+'年第'+'@natural(1, 99)'+'期',
-					'paper_id|+1':1,
-					'paper_numbei|1000-5000':888
+					name: '@cword(3, 5)'
 				}
 			]
 		},
@@ -50,6 +58,7 @@ export const getPaperInfo = (option) => {
 	}
 	return Mock.mock(template)
 }
+
 //获取首页视频模块
 export const getVideoInfo = (option) => {
 	const template = {
@@ -76,22 +85,7 @@ export const getVideoInfo = (option) => {
 	}
 	return Mock.mock(template)
 }
-//获取农技交流作物分类
-export const getCropClassify = (option) => {
-	const template = {
-		code: 200,
-		data: {
-			'list|8': [
-				{
-					label: '@cword(3, 5)',
-					'value|+1': 1
-				}
-			]
-		},
-		message: "Success"
-	}
-	return Mock.mock(template)
-}
+
 //获取农技交流复选框年份
 export const getYearInfo = (option) => {
 	const template = {

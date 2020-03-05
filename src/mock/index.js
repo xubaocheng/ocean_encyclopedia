@@ -1,33 +1,36 @@
  // 使用 Mock
  import Mock from 'mockjs'
  import {
-     getPaperInfo,
-     getBookInfo,
-     getVideoInfo,
-     getCropClassify,
-     getYearInfo,
-     getChirdCropInfo,
-     getPaperList,
-     getBookList,
-     getVideoList,
-     getAllCheckInfo,
-     getAllTreeInfo,
-     getRecBookList,
-     getRecTechnology,
-     getBookDetail,
-     getRecVideoList,
-     videoMessage
+    recommendedEntry,
+    recommendedQandA,
+    hotword,
+
+    getVideoInfo,
+    getYearInfo,
+    getChirdCropInfo,
+    getPaperList,
+    getBookList,
+    getVideoList,
+    getAllCheckInfo,
+    getAllTreeInfo,
+    getRecBookList,
+    getRecTechnology,
+    getBookDetail,
+    getRecVideoList,
+    videoMessage
  } from './response/mockData'
 
- const baseUrl2mock = process.env.NODE_ENV === 'production' ? process.env.BASE_URL : '/seed'
+ const baseUrl2mock = process.env.NODE_ENV === 'production' ? process.env.BASE_URL : '/api'
 
- Mock.mock(`${baseUrl2mock}/getBookInfo`,getBookInfo) //首页图书
+ Mock.mock(`${baseUrl2mock}/recommendedEntry`,recommendedEntry) //推荐词条
 
- Mock.mock(`${baseUrl2mock}/getPaperInfo`,getPaperInfo) //首页期刊论文
+ Mock.mock(`${baseUrl2mock}/recommendedQandA`,recommendedQandA) //推荐问答
+
+ Mock.mock(`${baseUrl2mock}/hotword`,hotword) //热词
 
  Mock.mock(`${baseUrl2mock}/getVideoInfo`,getVideoInfo) //首页视频
 
- Mock.mock(`${baseUrl2mock}/getCropClassify`,getCropClassify) //农技知识作物分类
+
 
  Mock.mock(`${baseUrl2mock}/getYearInfo`,getYearInfo) //农技知识年份list
 
