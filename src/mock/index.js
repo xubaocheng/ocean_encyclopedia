@@ -5,10 +5,12 @@
     recommendedQandA,
     hotword,
 
-    getVideoInfo,
-    getYearInfo,
-    getChirdCropInfo,
-    getPaperList,
+    hotEntry,
+    hotQandA,
+    informationList,
+
+    linkList,
+
     getBookList,
     getVideoList,
     getAllCheckInfo,
@@ -28,15 +30,14 @@
 
  Mock.mock(`${baseUrl2mock}/hotword`,hotword) //热词
 
- Mock.mock(`${baseUrl2mock}/getVideoInfo`,getVideoInfo) //首页视频
+ Mock.mock(`${baseUrl2mock}/hotEntry`,hotEntry) //热门词条
 
+ Mock.mock(`${baseUrl2mock}/hotQandA`,hotQandA) //热门问答
 
+ Mock.mock(`${baseUrl2mock}/informationList`,informationList) //资讯推荐
 
- Mock.mock(`${baseUrl2mock}/getYearInfo`,getYearInfo) //农技知识年份list
+ Mock.mock(`${baseUrl2mock}/linkList`,linkList) //友情链接
 
- Mock.mock(`${baseUrl2mock}/getChirdCropInfo`,getChirdCropInfo) //农技知识子级分类
-
- Mock.mock(`${baseUrl2mock}/getPaperList`,getPaperList) //农技知识期刊论文更多列表
 
  Mock.mock(`${baseUrl2mock}/getBookList`,getBookList) //农技知识图书更多列表
 

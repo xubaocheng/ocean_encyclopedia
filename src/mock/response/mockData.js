@@ -59,6 +59,122 @@ export const hotword = (option) => {
 	return Mock.mock(template)
 }
 
+//获取热门词条
+export const hotEntry = (option) => {
+    let pageIndex = JSON.parse(option.body).pageIndex
+    let pageSize = JSON.parse(option.body).pageSize
+	const template = {
+		code: 200,
+		data: {
+			pageIndex: pageIndex,
+			pageSize: pageSize,
+			total: 4444,
+			totalRecords: 66666,
+			list: () => {
+                let arr = []
+                for( let i = 0; i< pageSize; i++){
+                    arr.push(
+                        Mock.mock({
+                            'title': '@ctitle(4,9)',
+                            "content": "@csentence(60,140)"
+                        })
+                    )
+                }
+                return arr
+            }
+        },
+		message: "Success"
+	}
+	return Mock.mock(template)
+}
+
+//获取热门问答
+export const hotQandA = (option) => {
+    let pageIndex = JSON.parse(option.body).pageIndex
+    let pageSize = JSON.parse(option.body).pageSize
+	const template = {
+		code: 200,
+		data: {
+			pageIndex: pageIndex,
+			pageSize: pageSize,
+			total: 4444,
+			totalRecords: 66666,
+			list: () => {
+                let arr = []
+                for( let i = 0; i< pageSize; i++){
+                    arr.push(
+                        Mock.mock({
+                            'classify': '@ctitle(4)',
+                            'title': '@ctitle(4,9)',
+                            'img': Random.image('200x100', '#50B347', '#FFF', 'Mock.js'),
+                            "content": "@csentence(20,40)",
+                            'tag': [
+                                '海洋',
+                                '鲨鱼'
+                            ]
+                        })
+                    )
+                }
+                return arr
+            }
+        },
+		message: "Success"
+	}
+	return Mock.mock(template)
+}
+//获取资讯推荐
+export const informationList = (option) => {
+    let pageIndex = JSON.parse(option.body).pageIndex
+    let pageSize = JSON.parse(option.body).pageSize
+	const template = {
+		code: 200,
+		data: {
+			pageIndex: pageIndex,
+			pageSize: pageSize,
+			total: 4,
+			totalRecords: 16,
+			list: () => {
+                let arr = []
+                for( let i = 0; i< pageSize; i++){
+                    arr.push(
+                        Mock.mock({
+                            'title': '@ctitle(4,9)',
+                            'img': Random.image('180x115', '#50B347', '#FFF', 'Mock.js'),
+                            "content": "@csentence(140,200)",
+                            'author': '@cname',
+                            'time': '1小时前'
+                        })
+                    )
+                }
+                return arr
+            }
+        },
+		message: "Success"
+	}
+	return Mock.mock(template)
+}
+
+//友情链接
+export const linkList = (option) => {
+	const template = {
+		code: 200,
+		data: {
+			'list|35': [
+				{
+					name: '@cword(3, 6)'
+				}
+			]
+		},
+		message: "Success"
+	}
+	return Mock.mock(template)
+}
+
+
+
+
+
+
 //获取首页视频模块
 export const getVideoInfo = (option) => {
 	const template = {

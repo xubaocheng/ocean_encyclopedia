@@ -1,7 +1,7 @@
 import axios from './index'
 import publicUrl from './publicUrl'
 
-//推荐热词
+//推荐词条
 export const recommendedEntry = () => {
     return axios.request({
         url: `${publicUrl}/recommendedEntry`,
@@ -25,5 +25,42 @@ export const hotword = (params) => {
         method: 'post',
         dataType: 'json',
         data: params
+    })
+}
+//热门词条
+export const hotEntry = (params) => {
+    return axios.request({
+        url: `${publicUrl}/hotEntry`,
+        method: 'post',
+        dataType: 'json',
+        data: params
+    })
+}
+//热门问答
+export const hotQandA = (params) => {
+    return axios.request({
+        url: `${publicUrl}/hotQandA`,
+        method: 'post',
+        dataType: 'json',
+        data: params
+    })
+}
+
+//热门问答
+export const informationList = (params) => {
+    return axios.request({
+        url: `${publicUrl}/informationList`,
+        method: 'post',
+        dataType: 'json',
+        data: params
+    })
+}
+
+//友情链接
+export const linkList = () => {
+    return axios.request({
+        url: `${publicUrl}/linkList`,
+        method: 'post',
+        dataType: 'json'
     })
 }
