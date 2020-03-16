@@ -10,9 +10,9 @@
                 <h1>海洋出版社</h1>
                 <div class="top-nav-list">
                     <div class="top-nav-list-content">
-                        <span class="active">首页</span>
-                        <span>海洋百科</span>
-                        <span>海洋问答</span>
+                        <router-link tag="span" v-for="(item,i) in menuList" :key="i"  :to="{path:item.pathName}" class="topbar-item">
+                        　　{{item.name}}
+                        </router-link>
                     </div>
                 </div>
                 <div class="personal">个人中心</div>
@@ -27,7 +27,20 @@ export default {
     components: {},
     data() {
         return {
-
+            menuList:[
+				{
+					name:'首页',
+					pathName:'/homePage'
+				},
+				{
+					name:'海洋百科',
+					pathName:'/encycloped'
+				},
+				{
+					name:'海洋问答',
+					pathName:'/knowledge'
+				}
+			],
         };
     },
     mounted() {
@@ -79,25 +92,22 @@ export default {
                 display: flex;
                 justify-content: flex-end;
                 &-content{
-                    width: 600px;
-                    height: 100%;
+                    width: 500px;
+                    padding-right: 100px;
                     display: flex;
-                    justify-content: space-around;
-                    span{
+                    align-items: center;
+                    justify-content: space-between;
+                    .topbar-item{
                         width: 100px;
                         text-align: center;
                         font-size: 18px;
                         font-weight: bold;
                         line-height: 92px;
                         cursor: pointer;
-                        &.active{
+                        &:hover,&.router-link-active{
                             background-color: rgba(242, 242, 242, 1);
                             border-bottom: 4px solid rgba(46, 119, 188);
                         }
-                    }
-                    span:hover{
-                        background-color: rgba(242, 242, 242, 1);
-                        border-bottom: 4px solid rgba(46, 119, 188);
                     }
                 }
             }

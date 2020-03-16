@@ -170,6 +170,37 @@ export const linkList = (option) => {
 	return Mock.mock(template)
 }
 
+//跑马灯轮播图
+export const lempList = (option) => {
+	const template = {
+		code: 200,
+		data: {
+			'list': [
+				{
+					'img': Random.image('250x297', Random.color(), Random.color(), '1'),
+                },
+                {
+					'img': Random.image('250x297', Random.color(), Random.color(), '2'),
+                },
+                {
+					'img': Random.image('250x297', Random.color(), Random.color(), '3'),
+                },
+                {
+					'img': Random.image('250x297', Random.color(), Random.color(), '4'),
+                },
+                {
+					'img': Random.image('250x297', Random.color(), Random.color(), '5'),
+                },
+                {
+					'img': Random.image('250x297', Random.color(), Random.color(), '6'),
+				}
+			]
+		},
+		message: "Success"
+	}
+	return Mock.mock(template)
+}
+
 
 
 

@@ -11,6 +11,8 @@
 
     linkList,
 
+    lempList,
+
     getBookList,
     getVideoList,
     getAllCheckInfo,
@@ -37,6 +39,8 @@
  Mock.mock(`${baseUrl2mock}/informationList`,informationList) //资讯推荐
 
  Mock.mock(`${baseUrl2mock}/linkList`,linkList) //友情链接
+
+ Mock.mock(`${baseUrl2mock}/lempList`,lempList) //跑马灯轮播图图片
 
 
  Mock.mock(`${baseUrl2mock}/getBookList`,getBookList) //农技知识图书更多列表
