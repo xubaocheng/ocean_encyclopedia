@@ -40,7 +40,7 @@ export default {
     methods: {
        //移动
         move() {
-            this.timer = setInterval(this.starmove, 30)
+            this.timer = setInterval(this.starmove, 3000)
         },
         //开始移动
         starmove() {
