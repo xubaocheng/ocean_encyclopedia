@@ -201,8 +201,92 @@ export const lempList = (option) => {
 	return Mock.mock(template)
 }
 
+//获取侧边分类
+export const classifyList = (option) => {
+	const template = {
+		code: 200,
+		data: {
+			'list|5':[
+				{
+					id: Mock.mock('@integer(10000)'),
+					title: Mock.mock('@cword(3, 5)'),
+					expand: true,
+					isPurchase: true,
+					'children|2': [
+						{
+                            id: Mock.mock('@integer(10000)'),
+                            title: Mock.mock('@cword(3, 5)'),
+                            expand: false,
+                            isPurchase: false,
+                            'children|8': [
+                                {
+                                    id: Mock.mock('@integer(10000)'),
+                                    title: Mock.mock('@cword(3, 5)'),
+                                    expand: false,
+                                    isPurchase: false,
+                                    children: []
+                                }
+                            ]
+                        }
+					]
+				}
+			]
+		},
+		message: "Success"
+	}
+	return Mock.mock(template)
+}
 
+//获取热门词条分类
+export const hotEntryClassify = (option) => {
+	const template = {
+		code: 200,
+		data: {
+			'list|8': [
+				{
+                    name: '@cword(4)',
+                    icon: 'ios-construct',
+                    color: Mock.mock('@color')
+				}
+			]
+		},
+		message: "Success"
+	}
+	return Mock.mock(template)
+}
 
+//获取热们词条前十
+export const hotEntryClassifyRank = (option) => {
+	let pageIndex = JSON.parse(option.body).pageIndex
+    let pageSize = JSON.parse(option.body).pageSize
+	const template = {
+		code: 200,
+		data: {
+			pageIndex: pageIndex,
+			pageSize: pageSize,
+			total: 4444,
+			totalRecords: 66666,
+			list: () => {
+                let arr = []
+                for( let i = 0; i< pageSize; i++){
+                    arr.push(
+                        Mock.mock({
+                            'title': '@ctitle(4,9)',
+                            "content": "@csentence(60,140)",
+                            img:Random.image('200x100', '#FF6600'),
+                            headSculpture: Random.image('20x10', '#6fc'),
+                            author: Mock.mock('@cname'),
+                            date: Random.date('yyyy-MM-dd')
+                        })
+                    )
+                }
+                return arr
+            }
+        },
+        message: "Success"
+    }
+	return Mock.mock(template)
+}
 
 
 
