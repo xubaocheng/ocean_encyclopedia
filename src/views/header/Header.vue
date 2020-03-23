@@ -38,7 +38,7 @@ export default {
 				},
 				{
 					name:'海洋问答',
-					pathName:'/knowledge'
+					pathName:'/OceanQandA'
 				}
 			],
         };

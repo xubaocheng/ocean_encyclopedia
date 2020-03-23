@@ -25,5 +25,17 @@ export default [
 				component: resolve => { require(['@/views/encycloped/Encycloped.vue'], resolve); }
 			},
 		]
-	},
+    },
+    {
+		path: '/OceanQandA',
+		component: Home,
+		children: [
+			{
+				path: '/OceanQandA',
+				name: 'OceanQandA',
+				meta:{ title: '海洋问答'},
+				component: resolve => { require(['@/views/oceanQandA/OceanQandA.vue'], resolve); }
+			},
+		]
+    },
 ]

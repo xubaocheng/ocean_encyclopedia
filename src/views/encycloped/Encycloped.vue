@@ -228,7 +228,6 @@ export default {
                         display: flex;
                         justify-content: space-between;
                         flex-wrap: wrap;
-                        cursor: pointer;
                         &-item{
                             width: 21%;
                             height: 90px;
@@ -236,6 +235,9 @@ export default {
                             justify-content: space-around;
                             align-items: center;
                             margin-bottom: 20px;
+                            animation-name:upAnimation; /*动画的名称*/
+                            transform-origin: center bottom; /*设置动画旋转元素的基点为*/
+                            cursor: pointer;
                             span{
                                 font-size: 28px;
                                 font-weight: bold;
