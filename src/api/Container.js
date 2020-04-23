@@ -10,7 +10,7 @@ export const recommendedEntry = () => {
     })
 }
 //推荐问答
-export const recommendedQandA = (params) => {
+export const recommendedQandA = params => {
     return axios.request({
         url: `${publicUrl}/recommendedQandA`,
         method: 'post',
@@ -19,7 +19,7 @@ export const recommendedQandA = (params) => {
     })
 }
 //热词
-export const hotword = (params) => {
+export const hotword = params => {
     return axios.request({
         url: `${publicUrl}/hotword`,
         method: 'post',
@@ -28,7 +28,7 @@ export const hotword = (params) => {
     })
 }
 //热门词条
-export const hotEntry = (params) => {
+export const hotEntry = params => {
     return axios.request({
         url: `${publicUrl}/hotEntry`,
         method: 'post',
@@ -37,7 +37,7 @@ export const hotEntry = (params) => {
     })
 }
 //热门问答
-export const hotQandA = (params) => {
+export const hotQandA = params => {
     return axios.request({
         url: `${publicUrl}/hotQandA`,
         method: 'post',
@@ -47,7 +47,7 @@ export const hotQandA = (params) => {
 }
 
 //热门问答
-export const informationList = (params) => {
+export const informationList = params => {
     return axios.request({
         url: `${publicUrl}/informationList`,
         method: 'post',

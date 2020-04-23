@@ -3,15 +3,27 @@
     <div class="header-view">
         <div class="top">
             <div class="top-bar">
-                <span><Icon type="md-help-circle" size="18" color="#557" />帮助</span>
+                <span
+                    ><Icon
+                        type="md-help-circle"
+                        size="18"
+                        color="#557"
+                    />帮助</span
+                >
                 <span>登录/注册</span>
             </div>
             <div class="top-nav">
                 <h1>海洋出版社</h1>
                 <div class="top-nav-list">
                     <div class="top-nav-list-content">
-                        <router-link tag="span" v-for="(item,i) in menuList" :key="i"  :to="{path:item.pathName}" class="topbar-item">
-                        　　{{item.name}}
+                        <router-link
+                            tag="span"
+                            v-for="(item, i) in menuList"
+                            :key="i"
+                            :to="{ path: item.pathName }"
+                            class="topbar-item"
+                        >
+                            {{ item.name }}
                         </router-link>
                     </div>
                 </div>
@@ -27,45 +39,41 @@ export default {
     components: {},
     data() {
         return {
-            menuList:[
-				{
-					name:'首页',
-					pathName:'/homePage'
-				},
-				{
-					name:'海洋百科',
-					pathName:'/encycloped'
-				},
-				{
-					name:'海洋问答',
-					pathName:'/OceanQandA'
-				}
-			],
-        };
+            menuList: [
+                {
+                    name: '首页',
+                    pathName: '/homePage'
+                },
+                {
+                    name: '海洋百科',
+                    pathName: '/encycloped'
+                },
+                {
+                    name: '海洋问答',
+                    pathName: '/OceanQandA'
+                }
+            ]
+        }
     },
-    mounted() {
-
-    },
-    methods: {
-
-    },
+    mounted() {},
+    methods: {}
 }
 </script>
-<style lang='less' scoped>
-.header-view{
+<style lang="less" scoped>
+.header-view {
     width: 100%;
     height: 125px;
-    .top{
+    .top {
         width: 100%;
         height: 35px;
         background: #999;
-        &-bar{
+        &-bar {
             width: 1200px;
             height: 100%;
             display: flex;
             justify-content: flex-end;
             margin: 0 auto;
-            span{
+            span {
                 line-height: 35px;
                 font-size: 12px;
                 color: #fff;
@@ -73,38 +81,39 @@ export default {
                 cursor: pointer;
             }
         }
-        &-nav{
+        &-nav {
             width: 1200px;
             margin: 0 auto;
             display: flex;
             justify-content: space-between;
             align-items: center;
             height: 90px;
-            h1{
+            h1 {
                 width: 255px;
                 height: 50px;
                 text-indent: -999999em;
                 background: url('../../assets/img/logo.png') no-repeat;
             }
-            &-list{
+            &-list {
                 width: 870px;
                 height: 100%;
                 display: flex;
                 justify-content: flex-end;
-                &-content{
+                &-content {
                     width: 500px;
                     padding-right: 100px;
                     display: flex;
                     align-items: center;
                     justify-content: space-between;
-                    .topbar-item{
+                    .topbar-item {
                         width: 100px;
                         text-align: center;
                         font-size: 18px;
                         font-weight: bold;
                         line-height: 92px;
                         cursor: pointer;
-                        &:hover,&.router-link-active{
+                        &:hover,
+                        &.router-link-active {
                             background-color: rgba(242, 242, 242, 1);
                             border-bottom: 4px solid rgba(46, 119, 188);
                         }
@@ -112,7 +121,7 @@ export default {
                 }
             }
         }
-        .personal{
+        .personal {
             width: 85px;
             font-size: 18px;
             font-weight: bold;

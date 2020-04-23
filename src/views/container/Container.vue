@@ -11,7 +11,8 @@
                     :radius-dot="setting.radiusDot"
                     :trigger="setting.trigger"
                     :height="setting.height"
-                    :arrow="setting.arrow">
+                    :arrow="setting.arrow"
+                >
                     <CarouselItem>
                         <div class="swiper-carousel">1</div>
                     </CarouselItem>
@@ -30,19 +31,32 @@
                 <div class="recommended-entry">
                     <h2><Icon type="ios-paper" size="18" /> 推荐词条</h2>
                     <div class="recommended-entry-list">
-                        <span v-for="(item,index) in recommendedEntryList" :key="`recommendedEntryList_${index}`">{{item.name}}</span>
+                        <span
+                            v-for="(item, index) in recommendedEntryList"
+                            :key="`recommendedEntryList_${index}`"
+                            >{{ item.name }}</span
+                        >
                     </div>
                     <div class="entry-create-btn">
-                        <Button type="primary" shape="circle" size="large">创建词条</Button>
+                        <Button type="primary" shape="circle" size="large"
+                            >创建词条</Button
+                        >
                     </div>
                 </div>
                 <div class="recommended-qanda">
                     <h2><Icon type="md-help-circle" size="18" /> 推荐问答</h2>
                     <div class="recommended-qanda-list">
-                        <p v-for="(item,index) in recommendedQandAList" :key="`recommendedQandAList_${index}`">{{item.content}}</p>
+                        <p
+                            v-for="(item, index) in recommendedQandAList"
+                            :key="`recommendedQandAList_${index}`"
+                        >
+                            {{ item.content }}
+                        </p>
                     </div>
                     <div class="qanda-create-btn">
-                        <Button type="primary" shape="circle" size="large">我要提问</Button>
+                        <Button type="primary" shape="circle" size="large"
+                            >我要提问</Button
+                        >
                     </div>
                 </div>
             </div>
@@ -65,12 +79,18 @@
                     <span>更多>></span>
                 </div>
                 <div class="hot-entries-list">
-                    <div class="hot-entries-list-item"
-                        v-for="(item,index) in hotEntryList"
+                    <div
+                        class="hot-entries-list-item"
+                        v-for="(item, index) in hotEntryList"
                         :key="`item_${index}`"
-                            :class="index!==0 && index!==1 ? 'specialClass' : '' ">
-                        <h4>{{item.title}}</h4>
-                        <p v-if="index === 0 || index == 1">{{item.content}}</p>
+                        :class="
+                            index !== 0 && index !== 1 ? 'specialClass' : ''
+                        "
+                    >
+                        <h4>{{ item.title }}</h4>
+                        <p v-if="index === 0 || index == 1">
+                            {{ item.content }}
+                        </p>
                     </div>
                 </div>
             </div>
@@ -86,49 +106,71 @@
                     <span>更多>></span>
                 </div>
                 <div class="hot-qanda-list">
-                    <div class="hot-qanda-list-item"
-                        v-for="(item,index) in hotQandAList"
-                        :key="`item_${index}`">
+                    <div
+                        class="hot-qanda-list-item"
+                        v-for="(item, index) in hotQandAList"
+                        :key="`item_${index}`"
+                    >
                         <div class="item-box" v-if="index !== 2">
                             <div class="item-top">
-                                <span>{{item.classify}}</span>
-                                <h5>{{item.title}}</h5>
+                                <span>{{ item.classify }}</span>
+                                <h5>{{ item.title }}</h5>
                             </div>
                             <div class="item-bottom">
                                 <div class="item-bottom-pic">
-                                    <img :src="item.img" alt="">
+                                    <img :src="item.img" alt="" />
                                 </div>
                                 <div class="item-bottom-content">
-                                    <p>{{item.content}}</p>
+                                    <p>{{ item.content }}</p>
                                     <div class="item-bottom-content-tag">
-                                        <span v-for="(childTag,i) in item.tag" :key="`item_childTag_${i}`">{{childTag}}</span>
+                                        <span
+                                            v-for="(childTag, i) in item.tag"
+                                            :key="`item_childTag_${i}`"
+                                            >{{ childTag }}</span
+                                        >
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="item-special-box" v-if="index === 2" :style="{backgroundImage: 'url('+ item.img +')',backgroundSize:'cover'}">
-                            <span>{{item.classify}}</span>
-                            <h5>{{item.title}}</h5>
+                        <div
+                            class="item-special-box"
+                            v-if="index === 2"
+                            :style="{
+                                backgroundImage: 'url(' + item.img + ')',
+                                backgroundSize: 'cover'
+                            }"
+                        >
+                            <span>{{ item.classify }}</span>
+                            <h5>{{ item.title }}</h5>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
         <div class="part5">
-            <Information :informationListData="informationListData" @scroll-state="scroll"><div class="more">{{moreStatus}}</div></Information>
+            <Information
+                :informationListData="informationListData"
+                @scroll-state="scroll"
+                ><div class="more">{{ moreStatus }}</div></Information
+            >
         </div>
     </div>
 </template>
 
 <script>
-
-import Information from "./Information";
-import { recommendedEntry, recommendedQandA, hotword, hotEntry, hotQandA, informationList } from "@/api/Container";
+import Information from './Information'
+import {
+    recommendedEntry,
+    recommendedQandA,
+    hotword,
+    hotEntry,
+    hotQandA,
+    informationList
+} from '@/api/Container'
 export default {
     name: 'ContainerView',
     components: {
-
-        Information,
+        Information
     },
     data() {
         return {
@@ -140,7 +182,7 @@ export default {
                 radiusDot: true,
                 trigger: 'click',
                 arrow: 'hover',
-                height:250
+                height: 250
             },
             recommendedEntryList: [],
             recommendedQandAList: [],
@@ -151,9 +193,8 @@ export default {
             pageSize: 4,
             total: 0,
             moreStatus: '向下加载更多',
-            informationListData: [],
-
-        };
+            informationListData: []
+        }
     },
     mounted() {
         this.getRecommendedEntry()
@@ -161,100 +202,99 @@ export default {
         this.getHotword()
         this.getHotEntry()
         this.getHotQandA()
-        this.getInformationList(this.pageIndex,this.pageSize)
+        this.getInformationList(this.pageIndex, this.pageSize)
     },
 
     methods: {
-        getRecommendedEntry(){
-            recommendedEntry().then((res) => {
-				if(res.code == 200){
-					this.recommendedEntryList = res.data.list;
-				}
+        getRecommendedEntry() {
+            recommendedEntry().then(res => {
+                if (res.code == 200) {
+                    this.recommendedEntryList = res.data.list
+                }
             })
         },
-        getRecommendedQandA(){
+        getRecommendedQandA() {
             let params = {
                 pageIndex: 1,
                 pageSize: 3
             }
-            recommendedQandA(params).then((res) => {
-				if(res.code == 200){
-					this.recommendedQandAList = res.data.list;
-				}
+            recommendedQandA(params).then(res => {
+                if (res.code == 200) {
+                    this.recommendedQandAList = res.data.list
+                }
             })
         },
-        getHotword(){
+        getHotword() {
             let params = {
                 pageIndex: 1,
                 pageSize: 3
             }
-            hotword(params).then((res) => {
-				if(res.code == 200){
+            hotword(params).then(res => {
+                if (res.code == 200) {
                     this.hotwordList = res.data.list
-				}
+                }
             })
         },
-        getHotEntry(){
+        getHotEntry() {
             let params = {
                 pageIndex: 1,
                 pageSize: 8
             }
-            hotEntry(params).then((res) => {
-				if(res.code == 200){
-					this.hotEntryList = res.data.list;
-				}
+            hotEntry(params).then(res => {
+                if (res.code == 200) {
+                    this.hotEntryList = res.data.list
+                }
             })
         },
-        getHotQandA(){
+        getHotQandA() {
             let params = {
                 pageIndex: 1,
                 pageSize: 3
             }
-            hotQandA(params).then((res) => {
-				if(res.code == 200){
-					this.hotQandAList = res.data.list;
-				}
+            hotQandA(params).then(res => {
+                if (res.code == 200) {
+                    this.hotQandAList = res.data.list
+                }
             })
         },
-        getInformationList(pageIndex,pageSize){
+        getInformationList(pageIndex, pageSize) {
             let params = {
                 pageIndex: pageIndex,
                 pageSize: pageSize
             }
-            informationList(params).then((res) => {
+            informationList(params).then(res => {
                 console.log(res)
-				if(res.code == 200){
-					this.informationListData = res.data.list;
-				}
+                if (res.code == 200) {
+                    this.informationListData = res.data.list
+                }
             })
         },
-        scroll(){
-            this.pageIndex = 1;
+        scroll() {
+            this.pageIndex = 1
             this.total = this.total + 1
             this.pageSize = this.pageSize + 4
-            if(this.total >= 4){
+            if (this.total >= 4) {
                 console.log('没有了')
                 this.moreStatus = '已经加载全部'
-            }else{
-                this.getInformationList(this.pageIndex,this.pageSize)
+            } else {
+                this.getInformationList(this.pageIndex, this.pageSize)
             }
         }
-
-    },
+    }
 }
 </script>
-<style lang='less' scoped>
-.container-view{
+<style lang="less" scoped>
+.container-view {
     width: 1200px;
     margin: 0 auto;
-    .part1{
+    .part1 {
         width: 100%;
         display: flex;
-        .swiper{
+        .swiper {
             width: 800px;
             height: 250px;
             margin-bottom: 20px;
-            &-carousel{
+            &-carousel {
                 width: 100%;
                 height: 100%;
                 line-height: 250px;
@@ -265,21 +305,21 @@ export default {
                 background: green;
             }
         }
-        .recommended{
+        .recommended {
             width: 400px;
             height: 250px;
             display: flex;
             justify-content: space-between;
-            .recommended-entry{
+            .recommended-entry {
                 width: 199px;
                 height: 100%;
                 background: #fff;
-                h2{
+                h2 {
                     font-size: 16px;
                     text-align: center;
                     line-height: 60px;
                 }
-                &-list{
+                &-list {
                     width: 100%;
                     display: flex;
                     flex-wrap: wrap;
@@ -287,25 +327,25 @@ export default {
                     box-sizing: border-box;
                     justify-content: space-between;
                     margin-bottom: 20px;
-                    span{
+                    span {
                         min-width: 60px;
                         line-height: 34px;
                     }
                 }
-                .entry-create-btn{
+                .entry-create-btn {
                     text-align: center;
                 }
             }
-            .recommended-qanda{
+            .recommended-qanda {
                 width: 199px;
                 height: 100%;
                 background: #fff;
-                h2{
+                h2 {
                     font-size: 16px;
                     text-align: center;
                     line-height: 60px;
                 }
-                &-list{
+                &-list {
                     width: 100%;
                     display: flex;
                     flex-wrap: wrap;
@@ -313,7 +353,7 @@ export default {
                     box-sizing: border-box;
                     justify-content: space-between;
                     margin-bottom: 20px;
-                    p{
+                    p {
                         min-width: 60px;
                         line-height: 34px;
                         white-space: nowrap;
@@ -322,13 +362,13 @@ export default {
                         word-break: break-all;
                     }
                 }
-                .qanda-create-btn{
+                .qanda-create-btn {
                     text-align: center;
                 }
             }
         }
     }
-    .part2{
+    .part2 {
         width: 100%;
         height: 200px;
         display: flex;
@@ -336,68 +376,68 @@ export default {
         margin-bottom: 20px;
         background: #fff;
     }
-    .part3{
+    .part3 {
         width: 100%;
         height: 100px;
         margin-bottom: 20px;
         background: yellow;
     }
-    .part4{
+    .part4 {
         width: 100%;
         padding: 10px 20px;
         display: flex;
         background: #fff;
         margin-bottom: 20px;
-        .hot-entries{
+        .hot-entries {
             width: 570px;
-            .hot-title{
+            .hot-title {
                 width: 100%;
                 display: flex;
                 align-items: center;
                 justify-content: space-between;
                 margin-bottom: 20px;
-                h2{
+                h2 {
                     font-size: 16px;
                     text-align: center;
                     line-height: 60px;
                 }
-                .hot-togger{
+                .hot-togger {
                     width: 100px;
                     display: flex;
                     justify-content: space-between;
-                    span{
+                    span {
                         cursor: pointer;
-                        &.active{
+                        &.active {
                             color: rgb(46, 119, 188);
                         }
                     }
                 }
-                span{
+                span {
                     cursor: pointer;
                 }
             }
-            .hot-entries-list{
+            .hot-entries-list {
                 width: 100%;
                 display: flex;
                 flex-wrap: wrap;
-                &-item{
+                &-item {
                     width: 565px;
                     height: 150px;
                     padding: 0 20px;
                     background: #ccc;
                     margin-bottom: 5px;
-                    h4{
+                    h4 {
                         width: 100%;
                         line-height: 40px;
                         font-size: 14px;
                         font-weight: 600;
                     }
-                    p{
+                    p {
                         line-height: 24px;
                         font-size: 12px;
                     }
                 }
-                .specialClass{
+                .specialClass {
                     width: 280px;
                     display: flex;
                     align-items: center;
@@ -407,88 +447,88 @@ export default {
                 }
             }
         }
-        .split-line{
+        .split-line {
             width: 2px;
             margin: 20px 9px 0 9px;
             border-left: 1px solid #ccc;
         }
-        .hot-qanda{
+        .hot-qanda {
             width: 570px;
-            .hot-title{
+            .hot-title {
                 width: 100%;
                 display: flex;
                 align-items: center;
                 justify-content: space-between;
                 margin-bottom: 20px;
-                h2{
+                h2 {
                     font-size: 16px;
                     text-align: center;
                     line-height: 60px;
                 }
-                .hot-togger{
+                .hot-togger {
                     width: 100px;
                     display: flex;
                     justify-content: space-between;
-                    span{
+                    span {
                         cursor: pointer;
-                        &.active{
+                        &.active {
                             color: rgb(46, 119, 188);
                         }
                     }
                 }
-                span{
+                span {
                     cursor: pointer;
                 }
             }
-            &-list{
+            &-list {
                 width: 100%;
                 padding: 10px;
                 box-sizing: border-box;
-                &-item{
+                &-item {
                     margin-bottom: 20px;
-                    .item-box{
+                    .item-box {
                         width: 100%;
-                        .item-top{
+                        .item-top {
                             width: 100%;
                             display: flex;
                             align-items: center;
                             margin-bottom: 20px;
-                            span{
+                            span {
                                 padding: 5px 10px;
                                 background-color: rgba(23, 147, 242, 1);
                                 color: #fff;
                             }
-                            h5{
+                            h5 {
                                 padding-left: 60px;
                                 font-size: 16px;
                                 font-weight: 500;
                             }
                         }
-                        .item-bottom{
+                        .item-bottom {
                             width: 100%;
                             display: flex;
-                            &-pic{
+                            &-pic {
                                 width: 200px;
                                 height: 130px;
                                 margin-right: 30px;
-                                img{
+                                img {
                                     width: 100%;
                                     height: 100%;
                                     display: block;
                                 }
                             }
-                            &-content{
+                            &-content {
                                 width: 260px;
                                 display: flex;
                                 flex-direction: column;
                                 justify-content: space-between;
-                                p{
+                                p {
                                     font-size: 14px;
                                     line-height: 26px;
                                 }
-                                &-tag{
+                                &-tag {
                                     display: flex;
-                                    span{
+                                    span {
                                         padding: 10px 20px;
                                         border: 1px solid #ccc;
                                         margin-right: 20px;
@@ -497,18 +537,18 @@ export default {
                             }
                         }
                     }
-                    .item-special-box{
+                    .item-special-box {
                         height: 150px;
                         display: flex;
                         flex-direction: column;
                         justify-content: space-between;
-                        span{
+                        span {
                             width: 72px;
                             padding: 5px 10px;
                             background-color: rgba(23, 147, 242, 1);
                             color: #fff;
                         }
-                        h5{
+                        h5 {
                             padding: 10px 50px;
                             align-self: flex-end;
                             font-size: 16px;
@@ -516,13 +556,13 @@ export default {
                         }
                     }
                 }
-                &-item:last-child{
+                &-item:last-child {
                     margin-bottom: 0;
                 }
             }
         }
     }
-    .part5{
+    .part5 {
         width: 100%;
         background: #fff;
         padding: 10px 20px;

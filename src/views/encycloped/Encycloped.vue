@@ -1,6 +1,6 @@
 <!-- 海洋百科 -->
 <template>
-    <div class='encycloped'>
+    <div class="encycloped">
         <div class="part1">
             <div class="lemp-box">
                 <Lemp :lempListData="lempListData" />
@@ -9,7 +9,9 @@
                 <h4>{{ modulTitle }}</h4>
                 <p>{{ modulContent }}</p>
                 <div class="create-btn">
-                    <Button type="primary" shape="circle" size="large">创建词条</Button>
+                    <Button type="primary" shape="circle" size="large"
+                        >创建词条</Button
+                    >
                 </div>
             </div>
         </div>
@@ -24,31 +26,61 @@
                 <classify :classifyListData="classifyListData" />
                 <div class="classify-main">
                     <div class="classify-main-top">
-                        <h3><Icon type="ios-list-box" size="20" /> 热门词条分类</h3>
+                        <h3>
+                            <Icon type="ios-list-box" size="20" /> 热门词条分类
+                        </h3>
                         <div class="classify-main-top-list">
-                            <div class="classify-main-top-list-item" v-for="(item,index) in hotEntryClassifyListData" :ket="`hotEntryClassifyListData_item_${index}`" :style="{ background : item.color}">
-                                <span>{{item.name}}</span><Icon size="28" :type="item.icon" />
+                            <div
+                                class="classify-main-top-list-item"
+                                v-for="(item,
+                                index) in hotEntryClassifyListData"
+                                :key="`hotEntryClassifyListData_item_${index}`"
+                                :style="{ background: item.color }"
+                            >
+                                <span>{{ item.name }}</span
+                                ><Icon size="28" :type="item.icon" />
                             </div>
                         </div>
                     </div>
                     <div class="classify-main-bottom">
-                        <h3><Icon type="ios-list-box" size="20" /> 热门词条TOP10</h3>
+                        <h3>
+                            <Icon type="ios-list-box" size="20" /> 热门词条TOP10
+                        </h3>
                         <div class="classify-main-bottom-list">
-                            <div class="classify-main-bottom-list-item" v-for="(item,index) in hotEntryClassifyListRank" :ket="`hotEntryClassifyListRank_item_${index}`">
-                                <div class="item-index">{{index + 1}}</div>
+                            <div
+                                class="classify-main-bottom-list-item"
+                                v-for="(item,
+                                index) in hotEntryClassifyListRank"
+                                :key="`hotEntryClassifyListRank_item_${index}`"
+                            >
+                                <div class="item-index">{{ index + 1 }}</div>
                                 <div class="item-img">
-                                    <a href="javascript:;"><img :src="item.img" alt=""></a>
+                                    <a href="javascript:;"
+                                        ><img :src="item.img" alt=""
+                                    /></a>
                                 </div>
                                 <div class="item-main">
                                     <div class="item-main-title">
-                                        <h4>{{ item.title }}</h4><Icon size="20" type="md-arrow-up" />
+                                        <h4>{{ item.title }}</h4>
+                                        <Icon size="20" type="md-arrow-up" />
                                     </div>
                                     <div class="item-main-content">
                                         <p>{{ item.content }}</p>
                                     </div>
                                     <div class="item-main-bottom">
                                         <div class="item-main-bottom-author">
-                                            <span class="item-main-bottom-author-img" v-if="item.headSculpture" :style="{ backgroundImage: 'url('+ item.headSculpture +')',backgroundSize:'cover' }"></span><span>{{ item.author }}</span>
+                                            <span
+                                                class="item-main-bottom-author-img"
+                                                v-if="item.headSculpture"
+                                                :style="{
+                                                    backgroundImage:
+                                                        'url(' +
+                                                        item.headSculpture +
+                                                        ')',
+                                                    backgroundSize: 'cover'
+                                                }"
+                                            ></span
+                                            ><span>{{ item.author }}</span>
                                         </div>
                                         <div class="item-main-bottom-date">
                                             <span>{{ item.date }}</span>
@@ -65,8 +97,13 @@
 </template>
 
 <script>
-import { hotword } from "@/api/Container";
-import { lempList, classifyList, hotEntryClassify, hotEntryClassifyRank } from "@/api/Encycloped";
+import { hotword } from '@/api/Container'
+import {
+    lempList,
+    classifyList,
+    hotEntryClassify,
+    hotEntryClassifyRank
+} from '@/api/Encycloped'
 import Lemp from '_c/lemp/Lemp.vue'
 export default {
     name: 'encycloped',
@@ -77,14 +114,15 @@ export default {
         return {
             hotwordList: [],
             modulTitle: '我来试试',
-            modulContent: '这是所有海洋人都可参与协作的海洋百科全书，您可以亲自创建词条为平台做出贡献。',
+            modulContent:
+                '这是所有海洋人都可参与协作的海洋百科全书，您可以亲自创建词条为平台做出贡献。',
             lempListData: [],
             classifyListData: [],
             hotEntryClassifyListData: [],
             hotEntryClassifyListRank: [],
             pageIndex: 1,
             pageSize: 10
-        };
+        }
     },
     mounted() {
         this.getHotword()
@@ -94,31 +132,31 @@ export default {
         this.getHotEntryClassifRank()
     },
     methods: {
-        getHotword(){
+        getHotword() {
             let params = {
                 pageIndex: 1,
                 pageSize: 3
             }
-            hotword(params).then((res) => {
-				if(res.code == 200){
+            hotword(params).then(res => {
+                if (res.code == 200) {
                     this.hotwordList = res.data.list
-				}
+                }
             })
         },
-        getLempList(){
+        getLempList() {
             let params = {
-                num:3
+                num: 3
             }
-            lempList(params).then((res) => {
-				if(res.code == 200){
+            lempList(params).then(res => {
+                if (res.code == 200) {
                     this.lempListData = res.data.list
-				}
+                }
             })
         },
         //获取侧边栏分类数据
         getClassifyList() {
             classifyList().then(res => {
-                if(res.code == 200){
+                if (res.code == 200) {
                     this.classifyListData = res.data.list
                 }
             })
@@ -126,42 +164,42 @@ export default {
         //热门词条分类
         getHotEntryClassifList() {
             hotEntryClassify().then(res => {
-                if(res.code == 200){
+                if (res.code == 200) {
                     this.hotEntryClassifyListData = res.data.list
                 }
             })
         },
         //热门词条前10
-        getHotEntryClassifRank(){
+        getHotEntryClassifRank() {
             let params = {
                 pageIndex: this.pageIndex,
                 pageSize: this.pageSize
             }
             hotEntryClassifyRank(params).then(res => {
                 console.log(res)
-                if(res.code == 200){
+                if (res.code == 200) {
                     this.hotEntryClassifyListRank = res.data.list
                 }
             })
         }
-    },
+    }
 }
 </script>
-<style lang='less' scoped>
-.encycloped{
+<style lang="less" scoped>
+.encycloped {
     width: 1200px;
-    .part1{
+    .part1 {
         width: 100%;
         height: 340px;
         background: #eee;
         display: flex;
         justify-content: space-between;
         padding: 20px 0;
-        .lemp-box{
+        .lemp-box {
             width: 960px;
             height: 100%;
         }
-        .creat-entry-qanda{
+        .creat-entry-qanda {
             width: 210px;
             height: 100%;
             padding: 20px 10px;
@@ -170,25 +208,25 @@ export default {
             justify-content: space-between;
             flex-direction: column;
             background: #fff;
-            h4{
+            h4 {
                 text-align: center;
                 line-height: 80px;
                 font-size: 16px;
                 font-weight: bold;
                 color: rgb(255, 102, 0);
             }
-            p{
+            p {
                 text-indent: 2em;
                 font-size: 14px;
                 line-height: 28px;
                 color: rgb(153, 153, 153);
             }
-            .create-btn{
+            .create-btn {
                 text-align: center;
             }
         }
     }
-    .part2{
+    .part2 {
         width: 100%;
         height: 200px;
         display: flex;
@@ -196,108 +234,108 @@ export default {
         margin-bottom: 20px;
         background: #fff;
     }
-    .part3{
+    .part3 {
         width: 100%;
         height: 100px;
         margin-bottom: 20px;
         background: yellow;
     }
-    .part4{
+    .part4 {
         width: 100%;
         margin-bottom: 20px;
-        .classify{
+        .classify {
             width: 100%;
             height: 100%;
             display: flex;
             justify-content: space-between;
-            &-main{
+            &-main {
                 width: 910px;
                 border: 1px solid #e5e5e5;
                 padding: 10px 40px;
                 background: #fff;
-                &-top{
+                &-top {
                     width: 100%;
-                    h3{
+                    h3 {
                         width: 100%;
                         font-size: 16px;
                         font-weight: bold;
                         margin-bottom: 20px;
                     }
-                    &-list{
+                    &-list {
                         width: 100%;
                         display: flex;
                         justify-content: space-between;
                         flex-wrap: wrap;
-                        &-item{
+                        &-item {
                             width: 21%;
                             height: 90px;
                             display: flex;
                             justify-content: space-around;
                             align-items: center;
                             margin-bottom: 20px;
-                            animation-name:upAnimation; /*动画的名称*/
+                            animation-name: upAnimation; /*动画的名称*/
                             transform-origin: center bottom; /*设置动画旋转元素的基点为*/
                             cursor: pointer;
-                            span{
+                            span {
                                 font-size: 28px;
                                 font-weight: bold;
                             }
                         }
                     }
                 }
-                &-bottom{
+                &-bottom {
                     width: 100%;
-                    h3{
+                    h3 {
                         width: 100%;
                         font-size: 16px;
                         font-weight: bold;
                         margin-bottom: 20px;
                     }
-                    &-list{
+                    &-list {
                         width: 100%;
-                        &-item{
+                        &-item {
                             width: 100%;
                             display: flex;
                             justify-content: space-between;
                             margin-bottom: 10px;
                             cursor: pointer;
-                            .item-index{
+                            .item-index {
                                 width: 20px;
                                 font-size: 18px;
                                 font-weight: bold;
                             }
-                            .item-img{
+                            .item-img {
                                 width: 200px;
                                 height: 100px;
                             }
-                            .item-main{
+                            .item-main {
                                 width: 600px;
                                 display: flex;
                                 flex-direction: column;
                                 justify-content: space-between;
-                                &-title{
+                                &-title {
                                     width: 100%;
                                     display: flex;
                                     justify-content: space-between;
                                 }
-                                &-content{
+                                &-content {
                                     width: 100%;
-                                    p{
+                                    p {
                                         width: 100%;
                                         line-height: 20px;
                                         text-indent: 2em;
                                         font-size: 12px;
                                     }
                                 }
-                                &-bottom{
+                                &-bottom {
                                     width: 100%;
                                     display: flex;
                                     justify-content: space-between;
-                                    &-author{
+                                    &-author {
                                         font-size: 12px;
                                         color: #9e9e9e;
                                         display: flex;
-                                        &-img{
+                                        &-img {
                                             width: 20px;
                                             height: 20px;
                                             display: inline-block;
@@ -305,14 +343,13 @@ export default {
                                             margin-right: 10px;
                                         }
                                     }
-                                    &-date{
+                                    &-date {
                                         font-size: 12px;
                                         color: #9e9e9e;
                                     }
                                 }
                             }
                         }
-
                     }
                 }
             }

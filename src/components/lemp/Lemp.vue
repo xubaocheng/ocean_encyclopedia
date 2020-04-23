@@ -6,9 +6,13 @@
                 <!-- <div class="iconleft"  @click="zuohua">
                     <i class="el-icon-arrow-left"></i>
                 </div> -->
-                <ul :style="{'left':calleft + 'px'}"  v-on:mouseover="stopmove()" v-on:mouseout="move()">
-                    <li v-for="(item,index) in lempListData" :key="index">
-                        <img :src="item.img"/>
+                <ul
+                    :style="{ left: calleft + 'px' }"
+                    v-on:mouseover="stopmove()"
+                    v-on:mouseout="move()"
+                >
+                    <li v-for="(item, index) in lempListData" :key="index">
+                        <img :src="item.img" />
                     </li>
                 </ul>
                 <!-- <div class="iconright" @click="youhua">
@@ -31,22 +35,22 @@ export default {
     },
     data() {
         return {
-            calleft:0
-        };
+            calleft: 0
+        }
     },
     mounted() {
         this.move()
     },
     methods: {
-       //移动
+        //移动
         move() {
             this.timer = setInterval(this.starmove, 30)
         },
         //开始移动
         starmove() {
-            this.calleft -= 5;
-            let a = 4 * 340
-            if (this.calleft < - 3 * 340) {
+            this.calleft -= 5
+            // let a = 4 * 340
+            if (this.calleft < -3 * 340) {
                 this.calleft = 0
             }
         },
@@ -56,22 +60,22 @@ export default {
         },
         //点击按钮左移
         zuohua() {
-            this.calleft -= 340;
-            if (this.calleft < - 3 * 340) {
+            this.calleft -= 340
+            if (this.calleft < -3 * 340) {
                 this.calleft = 0
             }
         },
         //点击按钮右移
         youhua() {
-            this.calleft += 340;
+            this.calleft += 340
             if (this.calleft > 0) {
                 this.calleft = -1020
             }
-        },
-    },
+        }
+    }
 }
 </script>
-<style lang='less' scoped>
+<style lang="less" scoped>
 .back_add {
     background-color: #ededed;
     width: 100%;
@@ -81,7 +85,7 @@ export default {
 .threeImg {
     height: 100%;
     background: #ededed;
-    border-bottom: 3px solid #4679B2;
+    border-bottom: 3px solid #4679b2;
     // min-width: 1000px;
 }
 
@@ -91,7 +95,7 @@ export default {
     position: absolute;
     left: 0px;
     cursor: pointer;
-    height: 100%
+    height: 100%;
 }
 
 .threeImg .Containt ul li {

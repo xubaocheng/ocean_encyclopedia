@@ -1,14 +1,14 @@
 <template>
     <div class="home">
-        <Header/>
+        <Header />
         <div class="wrapper">
             <div class="content">
-                <Advert/>
+                <Advert />
                 <router-view></router-view>
-                <Crumbs/>
+                <Crumbs />
             </div>
-		</div>
-        <Footer/>
+        </div>
+        <Footer />
         <BackTop :height="100" :bottom="200">
             <div class="top">返回顶端</div>
         </BackTop>
@@ -32,21 +32,21 @@ export default {
 }
 </script>
 <style lang="less" scoped>
-.home{
+.home {
     width: 100%;
-    .wrapper{
+    .wrapper {
         width: 100%;
-        background-color: rgb(242,242,242);
+        background-color: rgb(242, 242, 242);
         padding-top: 20px;
-        .content{
+        .content {
             width: 1600px;
             margin: 0 auto;
             display: flex;
         }
     }
-    .top{
+    .top {
         padding: 10px;
-        background: rgba(0, 153, 229, .7);
+        background: rgba(0, 153, 229, 0.7);
         color: #fff;
         text-align: center;
         border-radius: 2px;

@@ -29,7 +29,7 @@ export const hotEntryClassify = () => {
 }
 
 //热门词条分类数据
-export const hotEntryClassifyRank = (params) => {
+export const hotEntryClassifyRank = params => {
     return axios.request({
         url: `${publicUrl}/hotEntryClassifyRank`,
         method: 'post',

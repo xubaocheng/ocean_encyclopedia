@@ -1,6 +1,6 @@
 <!-- 海洋问答 -->
 <template>
-    <div class='oceanQandA'></div>
+    <div class="oceanQandA"></div>
 </template>
 
 <script>
@@ -8,20 +8,14 @@ export default {
     name: 'OceanQandA',
     components: {},
     data() {
-        return {
-
-        };
+        return {}
     },
-    mounted() {
-
-    },
-    methods: {
-
-    },
+    mounted() {},
+    methods: {}
 }
 </script>
-<style lang='less' scoped>
-.oceanQandA{
+<style lang="less" scoped>
+.oceanQandA {
     width: 100%;
 }
 </style>

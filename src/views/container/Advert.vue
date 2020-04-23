@@ -1,6 +1,6 @@
 <!-- 广告模块 -->
 <template>
-    <div class='advert'></div>
+    <div class="advert"></div>
 </template>
 
 <script>
@@ -8,20 +8,14 @@ export default {
     name: 'Advert',
     components: {},
     data() {
-        return {
-
-        };
+        return {}
     },
-    mounted() {
-
-    },
-    methods: {
-
-    },
+    mounted() {},
+    methods: {}
 }
 </script>
-<style lang='less' scoped>
-.advert{
+<style lang="less" scoped>
+.advert {
     width: 200px;
     height: 300px;
     background: orange;

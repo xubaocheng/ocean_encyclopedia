@@ -14,9 +14,9 @@ NProgress.inc(0.2)
 NProgress.configure({ easing: 'ease', speed: 500, showSpinner: false })
 
 const router = new VueRouter({
-  routes
+    routes
 })
-router.beforeEach((to,from,next) => {
+router.beforeEach((to, from, next) => {
     NProgress.start() // 启动Progress
     const browserHeaderTitle = to.meta.title
     store.commit('SET_BROWSERHEADERTITLE', {
