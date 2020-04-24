@@ -1,6 +1,16 @@
 import Home from '../views/home/Home.vue'
 export default [
     {
+        path: '/login',
+        name: 'Login',
+        mate: {
+            title: '登录页'
+        },
+        component: resolve => {
+            require(['@/views/login/Login.vue'], resolve)
+        }
+    },
+    {
         path: '/',
         name: 'Home',
         component: Home,

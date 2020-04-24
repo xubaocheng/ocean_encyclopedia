@@ -10,7 +10,7 @@
                         color="#557"
                     />帮助</span
                 >
-                <span>登录/注册</span>
+                <span @click="goToLogin">登录/注册</span>
             </div>
             <div class="top-nav">
                 <h1>海洋出版社</h1>
@@ -56,7 +56,13 @@ export default {
         }
     },
     mounted() {},
-    methods: {}
+    methods: {
+        goToLogin() {
+            this.$router.push({
+                path: '/login'
+            })
+        }
+    }
 }
 </script>
 <style lang="less" scoped>
