@@ -49,11 +49,11 @@ export default {
             menuList: [
                 {
                     name: '首页',
-                    pathName: '/homePage'
+                    pathName: '/HomePage'
                 },
                 {
                     name: '海洋百科',
-                    pathName: '/encycloped'
+                    pathName: '/Encycloped'
                 },
                 {
                     name: '海洋问答',
@@ -66,7 +66,7 @@ export default {
     methods: {
         goToLogin() {
             this.$router.push({
-                path: '/login'
+                path: '/Login'
             })
         },
         goToPersonal() {
@@ -101,7 +101,7 @@ export default {
     }
     .bottom {
         width: 100%;
-        background: rgba(46, 53, 218, 0.9);
+        background: #282da0;
         color: #fff;
         &-nav {
             width: 1200px;
@@ -109,7 +109,7 @@ export default {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            height: 90px;
+            height: 80px;
             h1 {
                 width: 255px;
                 text-indent: -999999em;
@@ -131,12 +131,12 @@ export default {
                         text-align: center;
                         font-size: 18px;
                         font-weight: bold;
-                        line-height: 92px;
+                        line-height: 82px;
                         cursor: pointer;
                         &:hover,
                         &.router-link-active {
                             border-bottom: 4px solid #f1af63;
-                            height: 92px;
+                            height: 82px;
                         }
                     }
                 }
@@ -144,10 +144,10 @@ export default {
         }
         .personal {
             width: 130px;
-            height: 92px;
+            height: 82px;
             cursor: pointer;
             span {
-                line-height: 92px;
+                line-height: 82px;
                 font-size: 18px;
                 font-weight: bold;
                 i {
@@ -158,7 +158,7 @@ export default {
             &:hover {
                 border-bottom: 4px solid #f1af63;
                 span {
-                    height: 92px;
+                    height: 82px;
                 }
             }
         }

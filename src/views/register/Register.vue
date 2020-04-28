@@ -95,11 +95,11 @@ export default {
             nav: [
                 {
                     name: '首页',
-                    pathName: '/homePage'
+                    pathName: '/HomePage'
                 },
                 {
                     name: '海洋百科',
-                    pathName: '/encycloped'
+                    pathName: '/Encycloped'
                 },
                 {
                     name: '海洋问答',
@@ -134,7 +134,7 @@ export default {
     methods: {
         goLogin() {
             this.$router.push({
-                path: '/login'
+                path: '/Login'
             })
         }
     }

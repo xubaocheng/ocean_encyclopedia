@@ -1,7 +1,7 @@
 import Home from '../views/home/Home.vue'
 export default [
     {
-        path: '/login',
+        path: '/Login',
         name: 'Login',
         mate: {
             title: '登录页'
@@ -11,7 +11,7 @@ export default [
         }
     },
     {
-        path: '/register',
+        path: '/Register',
         name: 'Register',
         mate: {
             title: '注册页'
@@ -24,12 +24,12 @@ export default [
         path: '/',
         name: 'Home',
         component: Home,
-        redirect: '/homePage',
+        redirect: '/HomePage',
         children: [
             {
-                path: '/homePage',
+                path: '/HomePage',
                 meta: { title: '首页' },
-                name: 'homePage',
+                name: 'HomePage',
                 component: resolve => {
                     require(['@/views/container/Container.vue'], resolve)
                 }
@@ -37,12 +37,12 @@ export default [
         ]
     },
     {
-        path: '/encycloped',
+        path: '/Encycloped',
         component: Home,
         children: [
             {
-                path: '/encycloped',
-                name: 'encycloped',
+                path: '/Encycloped',
+                name: 'Encycloped',
                 meta: { title: '海洋百科' },
                 component: resolve => {
                     require(['@/views/encycloped/Encycloped.vue'], resolve)
