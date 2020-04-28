@@ -1,22 +1,22 @@
 <!-- 登录页 -->
 <template>
     <div class="lo-bg">
-        <div class="login">
-            <section class="login-top">
+        <div class="register">
+            <section class="register-top">
                 <hgroup></hgroup>
             </section>
-            <section class="login-nav">
-                <div class="login-nav-logo">
+            <section class="register-nav">
+                <div class="register-nav-logo">
                     <a href="javascript:;">
                         <img src="../../assets/img/logo.png" alt="" />
                     </a>
-                    <div class="login-nav-logo-title">
+                    <div class="register-nav-logo-title">
                         <h1>海洋知识服务平台</h1>
                         <span>|</span>
-                        <span>欢迎登录</span>
+                        <span>欢迎注册</span>
                     </div>
                 </div>
-                <div class="login-nav-list">
+                <div class="register-nav-list">
                     <router-link
                         tag="span"
                         v-for="(item, index) in nav"
@@ -28,18 +28,18 @@
                     </router-link>
                 </div>
             </section>
-            <section class="login-content">
-                <div class="login-content-box">
-                    <div class="login-content-box-left">
-                        <div class="login-content-box-left-main">
+            <section class="register-content">
+                <div class="register-content-box">
+                    <div class="register-content-box-left">
+                        <div class="register-content-box-left-main">
                             <img src="../../assets/img/QR-code.png" alt="" />
                             <strong>欢迎关注海洋出版社微信公众号</strong>
                             <p>守护蔚蓝星球 守护海洋————</p>
                             <span>PROTECTING THE BLUE OCEAN</span>
                         </div>
                     </div>
-                    <div class="login-content-box-right">
-                        <div class="login-content-box-right-side">
+                    <div class="register-content-box-right">
+                        <div class="register-content-box-right-side">
                             <ul class="numerical">
                                 <li
                                     class="numerical-item"
@@ -57,39 +57,18 @@
                                     </div>
                                 </li>
                             </ul>
-                            <p @click="goRegister">
-                                还不是会员？<span>
-                                    免费注册<i
-                                        class="ivu-icon ivu-icon-ios-arrow-round-forward"
-                                    ></i
-                                ></span>
+                            <p>
+                                <span @click="goLogin">
+                                    已有账号，直接登录</span
+                                >
                             </p>
                         </div>
-                        <div class="login-content-box-right-tab">
-                            <div class="tabs-btn-grounp">
-                                <span
-                                    v-for="(item, index) in tabs"
-                                    :key="`tabs_item_${index}`"
-                                    :class="{
-                                        active: currentTabIndex === index
-                                    }"
-                                    @click="handlerTabs(item, index)"
-                                    >{{ item.name }}</span
-                                >
-                            </div>
-                            <div class="tabs-warpper-container">
-                                <component
-                                    v-bind:is="currentTabComponent"
-                                ></component>
-                            </div>
-                            <div class="tabs-qq-wx-wb">
-                                <span>使用以下账户登录：</span>
-                                <div class="tabs-qq-wx-wb-btn">
-                                    <i class="iconfont icon-qq"></i>
-                                    <i class="iconfont icon-yooxi"></i>
-                                    <i class="iconfont icon-weibo"></i>
-                                </div>
-                            </div>
+                        <div class="register-content-box-right-form">
+                            <span class="register-content-box-right-form-title">
+                                手机注册
+                            </span>
+
+                            <div class="tabs-warpper-container"><Form /></div>
                             <p>
                                 温馨提示：海洋知识服务平台不会以任何名义向您征收费用，如有此类信息请用户提高警惕，谨防诈骗。
                             </p>
@@ -102,28 +81,12 @@
 </template>
 
 <script>
-import Account from './LoginAccount'
-import Mobile from './LoginMobile'
+import Form from './RegisterFrom'
 export default {
-    name: 'login',
-    components: {
-        Account,
-        Mobile
-    },
+    name: 'register',
+    components: { Form },
     data() {
         return {
-            tabs: [
-                {
-                    name: '密码登录',
-                    componentName: 'Account'
-                },
-                {
-                    name: '验证码登录',
-                    componentName: 'Mobile'
-                }
-            ],
-            currentTabIndex: 0,
-            currentTabComponent: 'Account',
             nav: [
                 {
                     name: '首页',
@@ -164,13 +127,9 @@ export default {
     },
     mounted() {},
     methods: {
-        handlerTabs(item, index) {
-            this.currentTabComponent = item.componentName
-            this.currentTabIndex = index
-        },
-        goRegister() {
+        goLogin() {
             this.$router.push({
-                path: '/register'
+                path: '/login'
             })
         }
     }
@@ -180,7 +139,6 @@ export default {
 .lo-bg {
     width: 100%;
     height: 100%;
-    // background: url('../../assets/img/login-bg.jpg') no-repeat;
     background: linear-gradient(
             to top,
             rgba(255, 255, 255, 0.5),
@@ -189,7 +147,7 @@ export default {
         url(../../assets/img/login-bg.png) no-repeat center;
     background-size: cover;
     position: relative;
-    .login {
+    .register {
         width: 100%;
         height: 100%;
         position: absolute;
@@ -204,7 +162,7 @@ export default {
                 height: 40px;
             }
         }
-        .login-nav {
+        .register-nav {
             width: 100%;
             height: 80px;
             background: rgb(40, 45, 160);
@@ -338,68 +296,23 @@ export default {
                             font-size: 16px;
                             height: 40px;
                             line-height: 40px;
-                            cursor: pointer;
                             span {
                                 color: #5eabf6;
-                                i {
-                                    font-size: 16px;
-                                    font-weight: bold;
-                                    color: #000;
-                                    &:hover {
-                                        color: #5eabf6;
-                                    }
-                                }
+                                cursor: pointer;
                             }
                         }
                     }
-                    &-tab {
+                    &-form {
                         width: 434px;
                         padding: 40px 20px 10px 20px;
                         display: flex;
                         flex-direction: column;
                         justify-content: space-between;
-                        .tabs-btn-grounp {
+                        &-title {
                             width: 100%;
-                            margin-bottom: 20px;
-                            display: flex;
-                            justify-content: center;
-                            span {
-                                font-size: 20px;
-                                margin: 0 10px;
-                                padding: 0 20px;
-                                cursor: pointer;
-                                padding-bottom: 10px;
-                                &.active {
-                                    border-bottom: 1px solid #439ff5;
-                                    color: #5eabf6;
-                                }
-                                &:hover {
-                                    color: #5eabf6;
-                                }
-                            }
-                        }
-                        .tabs-warpper-container {
-                            width: 100%;
-                            margin-bottom: 20px;
-                        }
-                        .tabs-qq-wx-wb {
-                            width: 100%;
-                            display: flex;
-                            align-items: center;
-                            margin-bottom: 20px;
-                            span {
-                                font-size: 16px;
-                            }
-                            &-btn {
-                                i {
-                                    font-size: 22px;
-                                    padding: 0 20px;
-                                    cursor: pointer;
-                                    &:hover {
-                                        color: #5eabf6;
-                                    }
-                                }
-                            }
+                            font-size: 20px;
+                            color: #429ef4;
+                            font-weight: bold;
                         }
                         p {
                             width: 100%;

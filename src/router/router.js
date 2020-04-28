@@ -11,6 +11,16 @@ export default [
         }
     },
     {
+        path: '/register',
+        name: 'Register',
+        mate: {
+            title: '注册页'
+        },
+        component: resolve => {
+            require(['@/views/register/Register.vue'], resolve)
+        }
+    },
+    {
         path: '/',
         name: 'Home',
         component: Home,
@@ -50,6 +60,20 @@ export default [
                 meta: { title: '海洋问答' },
                 component: resolve => {
                     require(['@/views/oceanQandA/OceanQandA.vue'], resolve)
+                }
+            }
+        ]
+    },
+    {
+        path: '/Personal',
+        component: Home,
+        children: [
+            {
+                path: '/Personal',
+                name: 'Personal',
+                meta: { title: '海洋问答' },
+                component: resolve => {
+                    require(['@/views/personal/Personal.vue'], resolve)
                 }
             }
         ]

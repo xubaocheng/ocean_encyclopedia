@@ -1,0 +1,30 @@
+{
+  "id": "1784902",
+  "name": "ocean_encyclopedia_v1",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "778674",
+      "name": "wx",
+      "font_class": "yooxi",
+      "unicode": "e60e",
+      "unicode_decimal": 58894
+    },
+    {
+      "icon_id": "970721",
+      "name": "qq",
+      "font_class": "qq",
+      "unicode": "e612",
+      "unicode_decimal": 58898
+    },
+    {
+      "icon_id": "5634903",
+      "name": "weibo",
+      "font_class": "weibo",
+      "unicode": "f261",
+      "unicode_decimal": 62049
+    }
+  ]
+}

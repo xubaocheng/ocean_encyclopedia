@@ -27,7 +27,12 @@
                         </router-link>
                     </div>
                 </div>
-                <div class="personal">个人中心</div>
+                <div class="personal">
+                    <span
+                        ><i class="ivu-icon ivu-icon-md-person"></i
+                        >个人中心</span
+                    >
+                </div>
             </div>
         </div>
     </div>
@@ -69,6 +74,8 @@ export default {
 .header-view {
     width: 100%;
     height: 125px;
+    background: #282da0;
+    color: #fff;
     .top {
         width: 100%;
         height: 35px;
@@ -96,7 +103,6 @@ export default {
             height: 90px;
             h1 {
                 width: 255px;
-                height: 50px;
                 text-indent: -999999em;
                 background: url('../../assets/img/logo.png') no-repeat;
             }
@@ -120,17 +126,32 @@ export default {
                         cursor: pointer;
                         &:hover,
                         &.router-link-active {
-                            background-color: rgba(242, 242, 242, 1);
-                            border-bottom: 4px solid rgba(46, 119, 188);
+                            border-bottom: 4px solid #f1af63;
+                            height: 92px;
                         }
                     }
                 }
             }
         }
         .personal {
-            width: 85px;
-            font-size: 18px;
-            font-weight: bold;
+            width: 130px;
+            height: 92px;
+            cursor: pointer;
+            span {
+                line-height: 92px;
+                font-size: 18px;
+                font-weight: bold;
+                i {
+                    font-size: 28px;
+                    margin-right: 10px;
+                }
+            }
+            &:hover {
+                border-bottom: 4px solid #f1af63;
+                span {
+                    height: 92px;
+                }
+            }
         }
     }
 }
