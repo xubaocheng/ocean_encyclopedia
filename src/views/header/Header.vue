@@ -12,23 +12,25 @@
                 >
                 <span @click="goToLogin">登录/注册</span>
             </div>
-            <div class="top-nav">
+        </div>
+        <div class="bottom">
+            <div class="bottom-nav">
                 <h1>海洋出版社</h1>
-                <div class="top-nav-list">
-                    <div class="top-nav-list-content">
+                <div class="bottom-nav-list">
+                    <div class="bottom-nav-list-content">
                         <router-link
                             tag="span"
                             v-for="(item, i) in menuList"
                             :key="i"
                             :to="{ path: item.pathName }"
-                            class="topbar-item"
+                            class="bottombar-item"
                         >
                             {{ item.name }}
                         </router-link>
                     </div>
                 </div>
                 <div class="personal">
-                    <span
+                    <span @click="goToPersonal"
                         ><i class="ivu-icon ivu-icon-md-person"></i
                         >个人中心</span
                     >
@@ -66,6 +68,11 @@ export default {
             this.$router.push({
                 path: '/login'
             })
+        },
+        goToPersonal() {
+            this.$router.push({
+                path: '/Personal'
+            })
         }
     }
 }
@@ -74,12 +81,9 @@ export default {
 .header-view {
     width: 100%;
     height: 125px;
-    background: #282da0;
-    color: #fff;
     .top {
         width: 100%;
         height: 35px;
-        background: #999;
         &-bar {
             width: 1200px;
             height: 100%;
@@ -94,6 +98,11 @@ export default {
                 cursor: pointer;
             }
         }
+    }
+    .bottom {
+        width: 100%;
+        background: rgba(46, 53, 218, 0.9);
+        color: #fff;
         &-nav {
             width: 1200px;
             margin: 0 auto;
@@ -117,7 +126,7 @@ export default {
                     display: flex;
                     align-items: center;
                     justify-content: space-between;
-                    .topbar-item {
+                    .bottombar-item {
                         width: 100px;
                         text-align: center;
                         font-size: 18px;

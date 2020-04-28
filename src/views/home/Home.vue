@@ -34,9 +34,10 @@ export default {
 <style lang="less" scoped>
 .home {
     width: 100%;
+    background: url('../../../src/assets/img/login-bg.png') no-repeat center;
+    background-size: cover;
     .wrapper {
         width: 100%;
-        background-color: rgb(242, 242, 242);
         padding-top: 20px;
         .content {
             width: 1600px;

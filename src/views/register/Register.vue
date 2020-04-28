@@ -69,6 +69,11 @@
                             </span>
 
                             <div class="tabs-warpper-container"><Form /></div>
+                            <div class="register-agreement">
+                                <strong
+                                    >注册代表你已同意【海洋知识服务平台用户协议】</strong
+                                >
+                            </div>
                             <p>
                                 温馨提示：海洋知识服务平台不会以任何名义向您征收费用，如有此类信息请用户提高警惕，谨防诈骗。
                             </p>
@@ -313,6 +318,12 @@ export default {
                             font-size: 20px;
                             color: #429ef4;
                             font-weight: bold;
+                        }
+                        .register-agreement {
+                            width: 100%;
+                            text-align: center;
+                            color: #429ef4;
+                            cursor: pointer;
                         }
                         p {
                             width: 100%;
