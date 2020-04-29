@@ -307,16 +307,77 @@ export const hotEntryClassifyRank = option => {
             list: () => {
                 let arr = []
                 for (let i = 0; i < pageSize; i++) {
-                    arr.push(
-                        Mock.mock({
-                            title: '@ctitle(4,9)',
-                            content: '@csentence(60,140)',
-                            img: Random.image('200x100', '#FF6600'),
-                            headSculpture: Random.image('20x10', '#6fc'),
-                            author: Mock.mock('@cname'),
-                            date: Random.date('yyyy-MM-dd')
-                        })
-                    )
+                    if (i === 2 || i === 3 || i === 8) {
+                        arr.push(
+                            Mock.mock({
+                                title: '@ctitle(4,9)',
+                                content: '@csentence(100,240)',
+                                img: '',
+                                headSculpture: Random.image('20x10', '#6fc'),
+                                author: Mock.mock('@cname'),
+                                date: Random.date('yyyy-MM-dd')
+                            })
+                        )
+                    } else {
+                        arr.push(
+                            Mock.mock({
+                                title: '@ctitle(4,9)',
+                                content: '@csentence(60,140)',
+                                img: Random.image('200x100', '#FF6600'),
+                                headSculpture: Random.image('20x10', '#6fc'),
+                                author: Mock.mock('@cname'),
+                                date: Random.date('yyyy-MM-dd')
+                            })
+                        )
+                    }
+                }
+                return arr
+            }
+        },
+        message: 'Success'
+    }
+    return Mock.mock(template)
+}
+//获取问答列表 --- 个人中心
+export const guessList = option => {
+    console.log(option)
+    let pageIndex = JSON.parse(option.body).pageIndex
+    let pageSize = JSON.parse(option.body).pageSize
+    const template = {
+        code: 200,
+        data: {
+            pageIndex: pageIndex,
+            pageSize: pageSize,
+            total: 5,
+            totalRecords: 20,
+            list: () => {
+                let arr = []
+                for (let i = 0; i < pageSize; i++) {
+                    if (i === 2 || i === 3 || i === 8) {
+                        arr.push(
+                            Mock.mock({
+                                title: '@ctitle(4,9)',
+                                content: '@csentence(100,240)',
+                                img: '',
+                                headSculpture: Random.image('20x10', '#6fc'),
+                                author: Mock.mock('@cname'),
+                                'count|1-100': 100,
+                                date: Random.date('yyyy-MM-dd')
+                            })
+                        )
+                    } else {
+                        arr.push(
+                            Mock.mock({
+                                title: '@ctitle(4,9)',
+                                content: '@csentence(100,240)',
+                                img: Random.image('400x400', '#FF6600'),
+                                headSculpture: Random.image('20x10', '#6fc'),
+                                author: Mock.mock('@cname'),
+                                'count|1-100': 100,
+                                date: Random.date('yyyy-MM-dd')
+                            })
+                        )
+                    }
                 }
                 return arr
             }

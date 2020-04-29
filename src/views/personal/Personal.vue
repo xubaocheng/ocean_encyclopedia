@@ -27,8 +27,7 @@
                             class="personal-top-quick-btnGroup-item"
                             v-for="(item, index) in quickList"
                             :key="`quickList_item_${index}`"
-                            :class="{ active: quickCurrentindex == index }"
-                            @click="handlerQuick(index)"
+                            @click="handlerQuick(item)"
                         >
                             <div class="personal-top-quick-btnGroup-item-box">
                                 <strong>{{ item.num }}</strong>
@@ -58,24 +57,39 @@
                     v-for="(item, index) in tabsBtnList"
                     :key="`tabsBtnList_item_${index}`"
                     :class="{ active: tabsBtnCurrentIndex == index }"
-                    @click="handlerTabsBtn(index)"
+                    @click="handlerTabsBtn(item, index)"
                 >
                     <i :class="`ivu-icon ivu-icon-${item.icon}`"></i>
                     <span>{{ item.tabsName }}</span>
-                    <Badge dot :count="item.count">
+                    <Badge dot :count="item.count" :offset="[15, 0]">
                         <em>( {{ item.num }} )</em>
                     </Badge>
                 </div>
             </div>
         </div>
-        <div class="personal-table"></div>
+        <div class="personal-table">
+            <component v-bind:is="currentTabComponent"></component>
+        </div>
     </div>
 </template>
 
 <script>
+import PersonalDefault from './child/default.vue'
+import PersonalNews from './child/news.vue'
+import PersonalCreate from './child/create.vue'
+import PersonalEdit from './child/edit.vue'
+import PersonalQuestion from './child/question.vue'
+import PersonalAnswers from './child/answers.vue'
 export default {
     name: 'Personal',
-    components: {},
+    components: {
+        PersonalDefault,
+        PersonalNews,
+        PersonalCreate,
+        PersonalEdit,
+        PersonalQuestion,
+        PersonalAnswers
+    },
     data() {
         return {
             gradeList: [
@@ -89,28 +103,31 @@ export default {
                 },
                 {
                     reaching: false,
-                    name: 'V2'
+                    name: 'V3'
                 }
             ],
             quickList: [
                 {
                     name: '创建通过',
-                    num: 5
+                    num: 5,
+                    componentName: 'PersonalCreate'
                 },
                 {
                     name: '编辑通过',
-                    num: 52
+                    num: 52,
+                    componentName: 'PersonalEdit'
                 },
                 {
                     name: '提问通过',
-                    num: 35
+                    num: 35,
+                    componentName: 'PersonalQuestion'
                 },
                 {
                     name: '回答并采纳',
-                    num: 23
+                    num: 23,
+                    componentName: 'PersonalAnswers'
                 }
             ],
-            quickCurrentindex: -1,
             passList: [
                 {
                     name: '词条通过率',
@@ -126,43 +143,53 @@ export default {
                     tabsName: '我的消息',
                     icon: 'ios-mail-outline',
                     num: 199,
-                    count: 10
+                    count: 10,
+                    componentName: 'PersonalNews'
                 },
                 {
                     tabsName: '我创建的词条',
                     icon: 'md-create',
                     num: 3,
-                    count: 0
+                    count: 0,
+                    componentName: 'PersonalCreate'
                 },
                 {
                     tabsName: '我编辑的词条',
                     icon: 'md-color-filter',
                     num: 20,
-                    count: 10
+                    count: 10,
+                    componentName: 'PersonalEdit'
                 },
                 {
                     tabsName: '我的提问',
                     icon: 'md-help',
                     num: 15,
-                    count: 10
+                    count: 10,
+                    componentName: 'PersonalQuestion'
                 },
                 {
                     tabsName: '我的问答',
                     icon: 'ios-chatboxes-outline',
                     num: 2880,
-                    count: 10
+                    count: 10,
+                    componentName: 'PersonalAnswers'
                 }
             ],
-            tabsBtnCurrentIndex: -1
+            tabsBtnCurrentIndex: -1,
+            currentTabComponent: 'PersonalDefault'
         }
     },
     mounted() {},
     methods: {
-        handlerQuick(index) {
-            this.quickCurrentindex = index
+        handlerQuick(item) {
+            this.currentTabComponent = item.componentName
+            this.tabsBtnCurrentIndex = this.tabsBtnList.findIndex(item => {
+                return this.currentTabComponent === item.componentName
+            })
         },
-        handlerTabsBtn(index) {
+        handlerTabsBtn(item, index) {
             this.tabsBtnCurrentIndex = index
+            this.currentTabComponent = item.componentName
         }
     }
 }
@@ -170,11 +197,11 @@ export default {
 <style lang="less" scoped>
 .personal {
     width: 100%;
-    height: 800px;
     border-top: 6px solid #0e38ae;
     background: #fff;
     &-information {
         width: 100%;
+        margin-bottom: 20px;
         .personal-top {
             width: 700px;
             margin: 0 auto;
@@ -278,7 +305,7 @@ export default {
                             }
                         }
                     }
-                    &-item.active {
+                    &-item:hover {
                         background: #28c4f7;
                         color: #fff;
                     }
@@ -320,16 +347,26 @@ export default {
             background: #ededed;
             .tabs-item {
                 width: 100%;
+                height: 100%;
+                cursor: pointer;
                 text-align: center;
+                display: flex;
+                align-items: center;
+                justify-content: center;
                 i {
+                    height: 100%;
+                    line-height: 50px;
                     font-size: 20px;
                     padding-right: 10px;
                 }
                 span {
+                    height: 100%;
+                    line-height: 50px;
                     font-size: 16px;
-                    cursor: pointer;
                 }
                 em {
+                    height: 100%;
+                    line-height: 50px;
                     font-style: normal;
                     color: #fe9003;
                     font-weight: bold;
@@ -337,8 +374,17 @@ export default {
                 }
                 &.active,
                 &:hover {
+                    box-sizing: border-box;
+                    height: 100%;
+                    border-bottom: 5px solid #27c4f9;
+                    i {
+                        color: #27c4f9;
+                    }
                     span {
-                        color: #0913ffe6;
+                        color: #27c4f9;
+                    }
+                    em {
+                        color: #27c4f9;
                     }
                 }
             }

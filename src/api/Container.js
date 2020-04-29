@@ -46,7 +46,7 @@ export const hotQandA = params => {
     })
 }
 
-//热门问答
+//推荐资讯
 export const informationList = params => {
     return axios.request({
         url: `${publicUrl}/informationList`,

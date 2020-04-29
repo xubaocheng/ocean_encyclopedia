@@ -54,7 +54,7 @@
                                 :key="`hotEntryClassifyListRank_item_${index}`"
                             >
                                 <div class="item-index">{{ index + 1 }}</div>
-                                <div class="item-img">
+                                <div class="item-img" v-if="item.img">
                                     <a href="javascript:;"
                                         ><img :src="item.img" alt=""
                                     /></a>
@@ -297,19 +297,19 @@ export default {
                             width: 100%;
                             display: flex;
                             justify-content: space-between;
-                            margin-bottom: 10px;
+                            margin-bottom: 20px;
                             cursor: pointer;
                             .item-index {
-                                width: 20px;
+                                min-width: 30px;
                                 font-size: 18px;
                                 font-weight: bold;
                             }
                             .item-img {
                                 width: 200px;
                                 height: 100px;
+                                margin-right: 10px;
                             }
                             .item-main {
-                                width: 600px;
                                 display: flex;
                                 flex-direction: column;
                                 justify-content: space-between;
@@ -325,6 +325,7 @@ export default {
                                         line-height: 20px;
                                         text-indent: 2em;
                                         font-size: 12px;
+                                        margin-bottom: 10px;
                                     }
                                 }
                                 &-bottom {

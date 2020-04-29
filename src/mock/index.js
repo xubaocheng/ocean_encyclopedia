@@ -12,15 +12,7 @@ import {
     classifyList,
     hotEntryClassify,
     hotEntryClassifyRank,
-    getBookList,
-    getVideoList,
-    getAllCheckInfo,
-    getAllTreeInfo,
-    getRecBookList,
-    getRecTechnology,
-    getBookDetail,
-    getRecVideoList,
-    videoMessage
+    guessList
 } from './response/mockData'
 
 const baseUrl2mock =
@@ -48,21 +40,6 @@ Mock.mock(`${baseUrl2mock}/hotEntryClassify`, hotEntryClassify) //热门词条�
 
 Mock.mock(`${baseUrl2mock}/hotEntryClassifyRank`, hotEntryClassifyRank) //热门词条前十
 
-Mock.mock(`${baseUrl2mock}/getBookList`, getBookList) //农技知识图书更多列表
+Mock.mock(`${baseUrl2mock}/guessList`, guessList) //猜你喜欢问答or词条列表
 
-Mock.mock(`${baseUrl2mock}/getVideoList`, getVideoList) //农技知识视频更多列表
-
-Mock.mock(`${baseUrl2mock}/getAllCheckInfo`, getAllCheckInfo) //农技知识全部作物分类checkBox list
-
-Mock.mock(`${baseUrl2mock}/getAllTreeInfo`, getAllTreeInfo) //农技知识全部作物分类tree list
-
-Mock.mock(`${baseUrl2mock}/getRecBookList`, getRecBookList) //获取推荐图书列表
-
-Mock.mock(`${baseUrl2mock}/getRecTechnology`, getRecTechnology) //获取推荐重大科技进展列表
-
-Mock.mock(`${baseUrl2mock}/getRecVideoList`, getRecVideoList) //获取推荐专家课堂视频
-
-Mock.mock(`${baseUrl2mock}/getBookDetail`, getBookDetail) //获取图书详情介绍
-
-Mock.mock(`${baseUrl2mock}/videoMessage`, videoMessage) //获取图书详情介绍
 export default Mock
