@@ -1,11 +1,13 @@
-<!--词条列表 -->
+<!-- table body列表盒子 -->
 <template>
-    <div class="entry-list">词条列表</div>
+    <ul class="table-werpper-body">
+        <slot></slot>
+    </ul>
 </template>
 
 <script>
 export default {
-    name: 'EntryList',
+    name: 'TableBody',
     components: {},
     data() {
         return {}
@@ -15,7 +17,7 @@ export default {
 }
 </script>
 <style lang="less" scoped>
-.entry-list {
+.table-werpper-body {
     width: 100%;
 }
 </style>

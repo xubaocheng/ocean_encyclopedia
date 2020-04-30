@@ -9,3 +9,13 @@ export const guessList = params => {
         data: params
     })
 }
+
+//创建的词条 --- 已通过版本
+export const createEctry = params => {
+    return axios.request({
+        url: `${publicUrl}/createEctry`,
+        method: 'post',
+        dataType: 'json',
+        data: params
+    })
+}

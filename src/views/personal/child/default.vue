@@ -4,9 +4,17 @@
         <section class="personal-default-top">
             <div class="personal-default-top-title">
                 <h5>猜你喜欢</h5>
-                <span :class="{ active: selectActive === 'entry' }">词条</span>
+                <span
+                    :class="{ active: selectActive === 'entry' }"
+                    @click="selectActiveFn('entry')"
+                    >词条</span
+                >
                 <i>|</i>
-                <span :class="{ active: selectActive === 'qAndA' }">问答</span>
+                <span
+                    :class="{ active: selectActive === 'qAndA' }"
+                    @click="selectActiveFn('qAndA')"
+                    >问答</span
+                >
             </div>
             <Button type="text" size="small">更多</Button>
         </section>
@@ -43,6 +51,11 @@ export default {
         this.getGuessList(this.selectActive, this.pageIndex, this.pageSize)
     },
     methods: {
+        selectActiveFn(name) {
+            this.selectActive = name
+            this.guessData = []
+            this.getGuessList(this.selectActive, this.pageIndex, this.pageSize)
+        },
         getGuessList(name, pageIndex, pageSize) {
             let params = {
                 name: name,

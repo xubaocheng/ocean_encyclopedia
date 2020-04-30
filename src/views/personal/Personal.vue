@@ -217,7 +217,7 @@ export default {
                     font-size: 30px;
                     position: absolute;
                     top: 0;
-                    right: 0;
+                    right: -20px;
                     cursor: pointer;
                 }
                 &-photo {

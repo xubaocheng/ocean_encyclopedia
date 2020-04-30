@@ -8,7 +8,13 @@ import NProgress from 'nprogress'
 import 'nprogress/nprogress.css' //这个样式必须引入
 
 Vue.use(VueRouter)
-
+/**
+ * 重写路由的push方法
+ */
+const routerPush = VueRouter.prototype.push
+VueRouter.prototype.push = function push(location) {
+    return routerPush.call(this, location).catch(error => error)
+}
 // 简单配置
 NProgress.inc(0.2)
 NProgress.configure({ easing: 'ease', speed: 500, showSpinner: false })

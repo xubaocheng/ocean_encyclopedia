@@ -29,9 +29,16 @@
                             <span class="synopsis-left-author">{{
                                 item.author
                             }}</span>
-                            <span class="synopsis-left-count"
-                                >回答{{ item.count }}次</span
-                            >
+                            <div v-if="selectActive === 'qAndA'">
+                                <span
+                                    class="synopsis-left-count"
+                                    v-if="item.count !== 0"
+                                    >回答{{ item.count }}次</span
+                                >
+                                <span class="synopsis-left-count" v-else
+                                    >还没有回答 <i>我来答</i></span
+                                >
+                            </div>
                         </div>
                         <div class="synopsis-right">
                             <span class="synopsis-right-date">{{
@@ -165,7 +172,7 @@ export default {
                     display: flex;
                     justify-content: space-between;
                     &-left {
-                        width: 200px;
+                        // width: 200px;
                         height: 25px;
                         display: flex;
                         align-items: center;
@@ -180,12 +187,18 @@ export default {
                             margin-right: 20px;
                         }
                         &-count {
+                            i {
+                                padding-left: 10px;
+                                font-style: normal;
+                                color: #56ccf8;
+                                cursor: pointer;
+                            }
                         }
                     }
-                    &-right {
-                        &-date {
-                        }
-                    }
+                    // &-right {
+                    //     &-date {
+                    //     }
+                    // }
                 }
             }
         }
