@@ -13,7 +13,10 @@ import {
     hotEntryClassify,
     hotEntryClassifyRank,
     guessList,
-    createEctry
+    createEctry,
+    editEctry,
+    question,
+    answers
 } from './response/mockData'
 
 const baseUrl2mock =
@@ -43,6 +46,12 @@ Mock.mock(`${baseUrl2mock}/hotEntryClassifyRank`, hotEntryClassifyRank) //热门
 
 Mock.mock(`${baseUrl2mock}/guessList`, guessList) //猜你喜欢问答or词条列表
 
-Mock.mock(`${baseUrl2mock}/createEctry`, createEctry) //创建的词条 ---已通过版本列表
+Mock.mock(`${baseUrl2mock}/createEctry`, createEctry) //创建的词条
+
+Mock.mock(`${baseUrl2mock}/editEctry`, editEctry) //编辑的词条
+
+Mock.mock(`${baseUrl2mock}/question`, question) //我的提问
+
+Mock.mock(`${baseUrl2mock}/answers`, answers) //我的回答
 
 export default Mock

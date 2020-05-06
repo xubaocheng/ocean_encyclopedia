@@ -440,19 +440,84 @@ export const createEctry = opation => {
         data: {
             'list|10': [
                 {
-                    entryName: '@cword(2,4)',
-                    'version|3': /\d{5}/,
-                    submitTime: Mock.mock('@date'),
-                    preserveTime: Mock.mock('@date'),
-                    examineTime: Mock.mock('@date'),
-                    adoptTime: Mock.mock('@date'),
+                    entryName: '@cword(2,4)', //词条名称
+                    'version|3': /\d{5}/, //版本号
+                    submitTime: Mock.mock('@date'), //提交时间
+                    preserveTime: Mock.mock('@date'), //保存时间
+                    examineTime: Mock.mock('@date'), // 审核时间
+                    adoptTime: Mock.mock('@date'), // 通过时间
                     'versionArr|3': [
                         {
                             'version|3': /\d{5}/,
                             'value|5': Mock.mock('@string("number", 1, 3)')
                         }
                     ],
-                    failReason: '@cword(6,10)'
+                    failReason: '@cword(6,10)' //未通过原因
+                }
+            ]
+        },
+        message: 'Success'
+    }
+    return Mock.mock(template)
+}
+//获取编辑的词条已通过版本
+export const editEctry = opation => {
+    const template = {
+        code: 200,
+        data: {
+            'list|10': [
+                {
+                    entryName: '@cword(2,4)', //词条名称
+                    'version|3': /\d{5}/, //版本号
+                    submitTime: Mock.mock('@date'), //提交时间
+                    preserveTime: Mock.mock('@date'), //保存时间
+                    examineTime: Mock.mock('@date'), // 审核时间
+                    adoptTime: Mock.mock('@date'), // 通过时间
+                    failReason: '@cword(6,10)' //未通过原因
+                }
+            ]
+        },
+        message: 'Success'
+    }
+    return Mock.mock(template)
+}
+//获取我的提问
+export const question = opation => {
+    const template = {
+        code: 200,
+        data: {
+            'list|10': [
+                {
+                    title: '@cword(6,14)', //标题
+                    'version|3': /\d{5}/, //版本号
+                    submitTime: Mock.mock('@date'), //提交时间
+                    examineTime: Mock.mock('@date'), // 审核时间
+                    answerTime: Mock.mock('@date'), //解答时间
+                    delTime: Mock.mock('@date'), //删除时间
+                    preserveTime: Mock.mock('@date'), //保存时间-最后编辑时间
+                    failReason: '@cword(6,10)' //未通过原因
+                }
+            ]
+        },
+        message: 'Success'
+    }
+    return Mock.mock(template)
+}
+//获取我的回答
+export const answers = opation => {
+    const template = {
+        code: 200,
+        data: {
+            'list|10': [
+                {
+                    title: '@cword(6,14)', //标题
+                    'version|3': /\d{5}/, //版本号
+                    adoptTime: Mock.mock('@date'), // 通过时间 --- 采纳时间
+                    delReason: '@cword(6,10)', //删除原因
+                    delTime: Mock.mock('@date'), //删除时间
+                    failReason: '@cword(6,10)', //未通过原因
+                    submitTime: Mock.mock('@date'), //提交时间
+                    examineTime: Mock.mock('@date') // 审核时间
                 }
             ]
         },

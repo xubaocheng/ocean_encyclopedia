@@ -221,6 +221,7 @@ export default {
                             title: '操作',
                             key: 'action',
                             render: (h, params) => {
+                                console.log(params)
                                 return h('div', [
                                     h(
                                         'Button',
@@ -272,6 +273,7 @@ export default {
                             title: '操作',
                             key: 'action',
                             render: (h, params) => {
+                                console.log(params)
                                 return h('div', [
                                     h(
                                         'Button',
