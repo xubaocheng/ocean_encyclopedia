@@ -442,13 +442,17 @@ export const createEctry = opation => {
                 {
                     entryName: '@cword(2,4)',
                     'version|3': /\d{5}/,
+                    submitTime: Mock.mock('@date'),
+                    preserveTime: Mock.mock('@date'),
+                    examineTime: Mock.mock('@date'),
                     adoptTime: Mock.mock('@date'),
                     'versionArr|3': [
                         {
                             'version|3': /\d{5}/,
-                            'value|1': Mock.mock('@string("number", 1, 3)')
+                            'value|5': Mock.mock('@string("number", 1, 3)')
                         }
-                    ]
+                    ],
+                    failReason: '@cword(6,10)'
                 }
             ]
         },

@@ -12,21 +12,29 @@
             >
         </div>
         <div class="table-box">
-            <Table stripe :columns="tableHeader" :data="tableData">
-                <template slot-scope="{ row }" slot="versionArr">
-                    <Select
-                        v-model="row.versionArr[0].value"
-                        style="width:200px"
-                    >
-                        <Option
-                            v-for="(versionArrItem, index) in row.versionArr"
-                            :value="versionArrItem.value"
-                            :key="`versionArr_item_${index}`"
-                            >{{ versionArrItem.version }}</Option
-                        >
-                    </Select>
-                </template>
+            <Table
+                stripe
+                ref="selection"
+                :columns="tableHeader"
+                :data="tableData"
+                @on-select-all="selectAllFn(true)"
+                @on-select-all-cancel="selectAllFn(false)"
+            >
             </Table>
+            <div
+                class="table-box-btnGroup"
+                v-if="tabsCurrentIndex == 2 || tabsCurrentIndex == 3"
+            >
+                <Button
+                    type="primary"
+                    class="table-box-btnGroup-btn"
+                    @click="handleSelectAll"
+                    >全选</Button
+                >
+                <Button type="error" class="table-box-btnGroup-btn"
+                    >批量删除</Button
+                >
+            </div>
         </div>
     </div>
 </template>
@@ -68,12 +76,38 @@ export default {
                 },
                 {
                     title: '被他人修改版本',
-                    slot: 'versionArr',
-                    key: 'versionArr'
+                    key: 'versionArr',
+                    render: (h, params) => {
+                        return h(
+                            'Select',
+                            {
+                                props: {
+                                    value: params.row.versionArr[0].value //默认值
+                                },
+                                on: {
+                                    'on-select': event => {
+                                        console.log(event)
+                                    }
+                                },
+                                style: {
+                                    backgroundColoe: 'yellow'
+                                }
+                            },
+                            params.row.versionArr.map(item => {
+                                return h('Option', {
+                                    props: {
+                                        value: item.value,
+                                        label: item.version
+                                    }
+                                })
+                            })
+                        )
+                    }
                 }
             ],
             tableData: [],
-            model: ''
+            model: '',
+            selectStatus: false
         }
     },
     mounted() {
@@ -83,17 +117,262 @@ export default {
         //操作tabs方法
         handlerTabsFn(item, index) {
             this.tabsCurrentIndex = index
+            this.selectStatus = false
+            this.$refs.selection.selectAll(this.selectStatus)
+            // console.log(item)
         },
+        //获取已通过版本表格数据
         getCreateEctry() {
             createEctry().then(res => {
-                console.log(res)
                 this.tableData = res.data.list
             })
+        },
+        // 判断当前table
+        toggleTableHeader(index) {
+            switch (index) {
+                case 0:
+                    this.tableHeader = [
+                        {
+                            title: '词条名称',
+                            key: 'entryName'
+                        },
+                        {
+                            title: '版本号',
+                            key: 'version'
+                        },
+                        {
+                            title: '通过时间',
+                            key: 'adoptTime'
+                        },
+                        {
+                            title: '被他人修改版本',
+                            key: 'versionArr',
+                            render: (h, params) => {
+                                return h(
+                                    'Select',
+                                    {
+                                        props: {
+                                            value:
+                                                params.row.versionArr[0].value //默认值
+                                        },
+                                        on: {
+                                            'on-select': event => {
+                                                console.log(event)
+                                            }
+                                        }
+                                    },
+                                    params.row.versionArr.map(item => {
+                                        return h('Option', {
+                                            props: {
+                                                value: item.value,
+                                                label: item.version
+                                            }
+                                        })
+                                    })
+                                )
+                            }
+                        }
+                    ]
+                    break
+                case 1:
+                    this.tableHeader = [
+                        {
+                            title: '词条名称',
+                            key: 'entryName'
+                        },
+                        {
+                            title: '版本号',
+                            key: 'version'
+                        },
+                        {
+                            title: '提交时间',
+                            key: 'submitTime'
+                        }
+                    ]
+                    break
+                case 2:
+                    this.tableHeader = [
+                        {
+                            type: 'selection',
+                            width: 60,
+                            align: 'center'
+                        },
+                        {
+                            title: '词条名称',
+                            key: 'entryName'
+                        },
+                        {
+                            title: '未通过原因',
+                            key: 'failReason'
+                        },
+                        {
+                            title: '版本号',
+                            key: 'version'
+                        },
+                        {
+                            title: '提交时间',
+                            key: 'submitTime'
+                        },
+                        {
+                            title: '审核时间',
+                            key: 'examineTime'
+                        },
+                        {
+                            title: '操作',
+                            key: 'action',
+                            render: (h, params) => {
+                                return h('div', [
+                                    h(
+                                        'Button',
+                                        {
+                                            props: {
+                                                type: 'text',
+                                                size: 'small'
+                                            },
+                                            style: {
+                                                color: '#28c4f7'
+                                            }
+                                        },
+                                        '删除'
+                                    ),
+                                    h(
+                                        'Button',
+                                        {
+                                            props: {
+                                                type: 'text',
+                                                size: 'small'
+                                            },
+                                            style: {
+                                                color: '#28c4f7'
+                                            }
+                                        },
+                                        '编辑'
+                                    )
+                                ])
+                            }
+                        }
+                    ]
+                    break
+                case 3:
+                    this.tableHeader = [
+                        {
+                            type: 'selection',
+                            width: 60,
+                            align: 'center'
+                        },
+                        {
+                            title: '词条名称',
+                            key: 'entryName'
+                        },
+                        {
+                            title: '保存时间',
+                            key: 'preserveTime'
+                        },
+                        {
+                            title: '操作',
+                            key: 'action',
+                            render: (h, params) => {
+                                return h('div', [
+                                    h(
+                                        'Button',
+                                        {
+                                            props: {
+                                                type: 'text',
+                                                size: 'small'
+                                            },
+                                            style: {
+                                                color: '#28c4f7'
+                                            }
+                                        },
+                                        '删除'
+                                    ),
+                                    h(
+                                        'Button',
+                                        {
+                                            props: {
+                                                type: 'text',
+                                                size: 'small'
+                                            },
+                                            style: {
+                                                color: '#28c4f7'
+                                            }
+                                        },
+                                        '编辑'
+                                    )
+                                ])
+                            }
+                        }
+                    ]
+                    break
+                default:
+                    this.tableHeader = [
+                        {
+                            title: '词条名称',
+                            key: 'entryName'
+                        },
+                        {
+                            title: '版本号',
+                            key: 'version'
+                        },
+                        {
+                            title: '通过时间',
+                            key: 'adoptTime'
+                        },
+                        {
+                            title: '被他人修改版本',
+                            key: 'versionArr',
+                            render: (h, params) => {
+                                return h(
+                                    'Select',
+                                    {
+                                        props: {
+                                            value:
+                                                params.row.versionArr[0].value //默认值
+                                        },
+                                        on: {
+                                            'on-select': event => {
+                                                console.log(event)
+                                            }
+                                        },
+                                        style: {
+                                            backgroundColoe: 'yellow'
+                                        }
+                                    },
+                                    params.row.versionArr.map(item => {
+                                        return h('Option', {
+                                            props: {
+                                                value: item.value,
+                                                label: item.version
+                                            }
+                                        })
+                                    })
+                                )
+                            }
+                        }
+                    ]
+            }
+        },
+        //表格中的全选方法
+        selectAllFn(boolen) {
+            this.selectStatus = boolen
+        },
+        //全选按钮切换
+        handleSelectAll() {
+            this.selectStatus = !this.selectStatus
+            this.$refs.selection.selectAll(this.selectStatus)
+        }
+    },
+    watch: {
+        tabsCurrentIndex(val) {
+            this.toggleTableHeader(val)
         }
     }
 }
 </script>
 <style lang="less" scoped>
+.ivu-table-wrapper {
+    overflow: inherit;
+}
 .personal-create {
     width: 100%;
     .table-tabs {
@@ -117,6 +396,16 @@ export default {
             &.active {
                 background: #282da0;
                 color: #fff;
+            }
+        }
+    }
+    .table-box {
+        widows: 100%;
+        &-btnGroup {
+            width: 100%;
+            padding: 10px 20px;
+            &-btn {
+                margin-right: 20px;
             }
         }
     }
