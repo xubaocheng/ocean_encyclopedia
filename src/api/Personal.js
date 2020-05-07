@@ -49,3 +49,13 @@ export const answers = params => {
         data: params
     })
 }
+
+//消息
+export const news = params => {
+    return axios.request({
+        url: `${publicUrl}/news`,
+        method: 'post',
+        dataType: 'json',
+        data: params
+    })
+}

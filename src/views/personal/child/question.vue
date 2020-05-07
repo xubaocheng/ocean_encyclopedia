@@ -35,6 +35,13 @@
                     >批量删除</Button
                 >
             </div>
+            <div class="table-box-page">
+                <Page
+                    :total="total"
+                    :current="pageIndex"
+                    @on-change="handlerPage"
+                />
+            </div>
         </div>
     </div>
 </template>
@@ -46,6 +53,9 @@ export default {
     components: {},
     data() {
         return {
+            pageIndex: 1,
+            pageSize: 5,
+            total: 0,
             tabs: [
                 {
                     name: '等待审核'
@@ -90,17 +100,33 @@ export default {
         this.getQuestion()
     },
     methods: {
+        //分页
+        handlerPage(index) {
+            console.log(index)
+            this.pageIndex = index
+        },
         //操作tabs方法
         handlerTabsFn(item, index) {
             this.tabsCurrentIndex = index
             this.selectStatus = false
             this.$refs.selection.selectAll(this.selectStatus)
+            this.pageIndex = 1
+            this.getQuestion()
             // console.log(item)
         },
         //获取已通过版本表格数据
         getQuestion() {
-            question().then(res => {
-                this.tableData = res.data.list
+            let params = {
+                pageIndex: this.pageIndex,
+                pageSize: this.pageSize
+            }
+            question(params).then(res => {
+                if (res.code == 200) {
+                    this.tableData = res.data.list
+                    this.total = res.data.totalRecords
+                } else {
+                    this.$Message.error('加载失败，刷新试试')
+                }
             })
         },
         // 判断当前table
@@ -331,7 +357,7 @@ export default {
         width: 100%;
         height: 60px;
         border: 1px solid #0d0d0d;
-        background: #d9d9d9;
+        background: #ededed;
         display: flex;
         justify-content: space-between;
         margin-bottom: 10px;
@@ -346,7 +372,7 @@ export default {
             cursor: pointer;
             &:hover,
             &.active {
-                background: #282da0;
+                background: rgba(51, 153, 255, 1);
                 color: #fff;
             }
         }
@@ -359,6 +385,11 @@ export default {
             &-btn {
                 margin-right: 20px;
             }
+        }
+        &-page {
+            width: 100%;
+            padding: 20px 0;
+            text-align: center;
         }
     }
 }

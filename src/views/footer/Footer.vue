@@ -51,7 +51,7 @@ export default {
     width: 100%;
     .footer-top {
         width: 100%;
-        background-color: rgba(215, 215, 215, 1);
+        background-color: #f0f3ff;
         .link-list {
             width: 1200px;
             padding: 10px 20px;
@@ -59,14 +59,19 @@ export default {
             p {
                 margin-bottom: 10px;
                 line-height: 40px;
+                font-size: 16px;
+                color: #030303;
+                font-weight: bold;
             }
             &-item {
                 width: 100%;
                 display: flex;
                 flex-wrap: wrap;
                 line-height: 24px;
+                padding-left: 50px;
                 span {
-                    width: 232px;
+                    width: 150px;
+                    color: #030303;
                 }
             }
         }
@@ -77,7 +82,7 @@ export default {
         font-size: 14px;
         text-align: center;
         color: #fff;
-        background-color: rgba(153, 153, 153, 1);
+        background-color: #000c6a;
     }
 }
 </style>

@@ -16,7 +16,8 @@ import {
     createEctry,
     editEctry,
     question,
-    answers
+    answers,
+    news
 } from './response/mockData'
 
 const baseUrl2mock =
@@ -53,5 +54,7 @@ Mock.mock(`${baseUrl2mock}/editEctry`, editEctry) //编辑的词条
 Mock.mock(`${baseUrl2mock}/question`, question) //我的提问
 
 Mock.mock(`${baseUrl2mock}/answers`, answers) //我的回答
+
+Mock.mock(`${baseUrl2mock}/news`, news) //我的消息
 
 export default Mock

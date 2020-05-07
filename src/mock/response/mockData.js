@@ -3,7 +3,7 @@ import Mock from 'mockjs'
 
 const Random = Mock.Random
 //获取推荐词条
-export const recommendedEntry = options => {
+export const recommendedEntry = opations => {
     const template = {
         code: 200,
         data: {
@@ -18,9 +18,9 @@ export const recommendedEntry = options => {
     return Mock.mock(template)
 }
 //获取推荐问答
-export const recommendedQandA = option => {
-    let pageIndex = JSON.parse(option.body).pageIndex
-    let pageSize = JSON.parse(option.body).pageSize
+export const recommendedQandA = opation => {
+    let pageIndex = JSON.parse(opation.body).pageIndex
+    let pageSize = JSON.parse(opation.body).pageSize
     const template = {
         code: 200,
         data: {
@@ -45,7 +45,7 @@ export const recommendedQandA = option => {
     return Mock.mock(template)
 }
 //获取热词
-export const hotword = option => {
+export const hotword = opation => {
     const template = {
         code: 200,
         data: {
@@ -61,9 +61,9 @@ export const hotword = option => {
 }
 
 //获取热门词条
-export const hotEntry = option => {
-    let pageIndex = JSON.parse(option.body).pageIndex
-    let pageSize = JSON.parse(option.body).pageSize
+export const hotEntry = opation => {
+    let pageIndex = JSON.parse(opation.body).pageIndex
+    let pageSize = JSON.parse(opation.body).pageSize
     const template = {
         code: 200,
         data: {
@@ -90,9 +90,9 @@ export const hotEntry = option => {
 }
 
 //获取热门问答
-export const hotQandA = option => {
-    let pageIndex = JSON.parse(option.body).pageIndex
-    let pageSize = JSON.parse(option.body).pageSize
+export const hotQandA = opation => {
+    let pageIndex = JSON.parse(opation.body).pageIndex
+    let pageSize = JSON.parse(opation.body).pageSize
     const template = {
         code: 200,
         data: {
@@ -126,9 +126,9 @@ export const hotQandA = option => {
     return Mock.mock(template)
 }
 //获取资讯推荐
-export const informationList = option => {
-    let pageIndex = JSON.parse(option.body).pageIndex
-    let pageSize = JSON.parse(option.body).pageSize
+export const informationList = opation => {
+    let pageIndex = JSON.parse(opation.body).pageIndex
+    let pageSize = JSON.parse(opation.body).pageSize
     const template = {
         code: 200,
         data: {
@@ -163,7 +163,7 @@ export const informationList = option => {
 }
 
 //友情链接
-export const linkList = option => {
+export const linkList = opation => {
     const template = {
         code: 200,
         data: {
@@ -179,7 +179,7 @@ export const linkList = option => {
 }
 
 //跑马灯轮播图
-export const lempList = option => {
+export const lempList = opation => {
     const template = {
         code: 200,
         data: {
@@ -240,7 +240,7 @@ export const lempList = option => {
 }
 
 //获取侧边分类
-export const classifyList = option => {
+export const classifyList = opation => {
     const template = {
         code: 200,
         data: {
@@ -276,7 +276,7 @@ export const classifyList = option => {
 }
 
 //获取热门词条分类
-export const hotEntryClassify = option => {
+export const hotEntryClassify = opation => {
     const template = {
         code: 200,
         data: {
@@ -294,9 +294,9 @@ export const hotEntryClassify = option => {
 }
 
 //获取热们词条前十
-export const hotEntryClassifyRank = option => {
-    let pageIndex = JSON.parse(option.body).pageIndex
-    let pageSize = JSON.parse(option.body).pageSize
+export const hotEntryClassifyRank = opation => {
+    let pageIndex = JSON.parse(opation.body).pageIndex
+    let pageSize = JSON.parse(opation.body).pageSize
     const template = {
         code: 200,
         data: {
@@ -338,12 +338,12 @@ export const hotEntryClassifyRank = option => {
     }
     return Mock.mock(template)
 }
-//获取问答列表 --- 个人中心
-export const guessList = option => {
-    // console.log(option)
-    let name = JSON.parse(option.body).name
-    let pageIndex = JSON.parse(option.body).pageIndex
-    let pageSize = JSON.parse(option.body).pageSize
+//获取推荐问答列表，推荐词条列表 --- 个人中心 默认模块
+export const guessList = opation => {
+    // console.log(opation)
+    let name = JSON.parse(opation.body).name
+    let pageIndex = JSON.parse(opation.body).pageIndex
+    let pageSize = JSON.parse(opation.body).pageSize
     const template1 = {
         code: 200,
         data: {
@@ -435,9 +435,15 @@ export const guessList = option => {
 
 //获取创建的词条已通过版本
 export const createEctry = opation => {
+    let pageIndex = JSON.parse(opation.body).pageIndex
+    let pageSize = JSON.parse(opation.body).pageSize
     const template = {
         code: 200,
         data: {
+            pageIndex: pageIndex,
+            pageSize: pageSize,
+            total: 5,
+            totalRecords: 50,
             'list|10': [
                 {
                     entryName: '@cword(2,4)', //词条名称
@@ -462,9 +468,15 @@ export const createEctry = opation => {
 }
 //获取编辑的词条已通过版本
 export const editEctry = opation => {
+    let pageIndex = JSON.parse(opation.body).pageIndex
+    let pageSize = JSON.parse(opation.body).pageSize
     const template = {
         code: 200,
         data: {
+            pageIndex: pageIndex,
+            pageSize: pageSize,
+            total: 5,
+            totalRecords: 50,
             'list|10': [
                 {
                     entryName: '@cword(2,4)', //词条名称
@@ -483,9 +495,15 @@ export const editEctry = opation => {
 }
 //获取我的提问
 export const question = opation => {
+    let pageIndex = JSON.parse(opation.body).pageIndex
+    let pageSize = JSON.parse(opation.body).pageSize
     const template = {
         code: 200,
         data: {
+            pageIndex: pageIndex,
+            pageSize: pageSize,
+            total: 5,
+            totalRecords: 50,
             'list|10': [
                 {
                     title: '@cword(6,14)', //标题
@@ -505,9 +523,15 @@ export const question = opation => {
 }
 //获取我的回答
 export const answers = opation => {
+    let pageIndex = JSON.parse(opation.body).pageIndex
+    let pageSize = JSON.parse(opation.body).pageSize
     const template = {
         code: 200,
         data: {
+            pageIndex: pageIndex,
+            pageSize: pageSize,
+            total: 5,
+            totalRecords: 50,
             'list|10': [
                 {
                     title: '@cword(6,14)', //标题
@@ -518,6 +542,30 @@ export const answers = opation => {
                     failReason: '@cword(6,10)', //未通过原因
                     submitTime: Mock.mock('@date'), //提交时间
                     examineTime: Mock.mock('@date') // 审核时间
+                }
+            ]
+        },
+        message: 'Success'
+    }
+    return Mock.mock(template)
+}
+
+//获取我的消息
+export const news = opation => {
+    let pageIndex = JSON.parse(opation.body).pageIndex
+    let pageSize = JSON.parse(opation.body).pageSize
+    const template = {
+        code: 200,
+        data: {
+            pageIndex: pageIndex,
+            pageSize: pageSize,
+            total: 5,
+            totalRecords: 50,
+            'list|10': [
+                {
+                    newsType: '@cword(6,10)', //消息类型
+                    newsName: '@cword(6,14)', //消息名称
+                    'newsStatus|1': true // 消息状态
                 }
             ]
         },

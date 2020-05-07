@@ -63,7 +63,7 @@ export default {
                 pageSize: pageSize
             }
             guessList(params).then(res => {
-                console.log(res)
+                // console.log(res)
                 if (res.code == 200) {
                     this.guessData = res.data.list
                 }
@@ -74,7 +74,7 @@ export default {
             this.total = this.total + 1
             this.pageSize = this.pageSize + 5
             if (this.total >= 4) {
-                console.log('没有了')
+                // console.log('没有了')
                 this.moreStatus = '已经加载全部'
             } else {
                 this.getGuessList(
