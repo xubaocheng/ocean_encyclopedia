@@ -4,7 +4,10 @@
         <div class="personal-information">
             <div class="personal-top">
                 <div class="personal-top-user">
-                    <i class="ivu-icon ivu-icon-md-settings"></i>
+                    <i
+                        class="ivu-icon ivu-icon-md-settings"
+                        @click="handlerToEditUser"
+                    ></i>
                     <div class="personal-top-user-photo">
                         <img src="../../../src/assets/img/photo.png" alt="" />
                     </div>
@@ -20,7 +23,7 @@
                         </li>
                     </ul>
                 </div>
-                <div class="kailong"></div>
+                <div class="triangle"></div>
                 <div class="personal-top-quick">
                     <ul class="personal-top-quick-btnGroup">
                         <li
@@ -181,6 +184,12 @@ export default {
     },
     mounted() {},
     methods: {
+        //编辑个人信息
+        handlerToEditUser() {
+            this.$router.push({
+                path: '/EditUserInfo'
+            })
+        },
         handlerQuick(item) {
             this.currentTabComponent = item.componentName
             this.tabsBtnCurrentIndex = this.tabsBtnList.findIndex(item => {
@@ -262,7 +271,7 @@ export default {
                     }
                 }
             }
-            .kailong {
+            .triangle {
                 margin-top: 70px;
                 width: 0;
                 height: 0;

@@ -77,5 +77,19 @@ export default [
                 }
             }
         ]
+    },
+    {
+        path: '/EditUserInfo',
+        component: Home,
+        children: [
+            {
+                path: '/EditUserInfo',
+                name: 'EditUserInfo',
+                meta: { title: '个人信息编辑' },
+                component: resolve => {
+                    require(['@/views/editUserInfo/EditUserInfo.vue'], resolve)
+                }
+            }
+        ]
     }
 ]
