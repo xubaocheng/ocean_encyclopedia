@@ -150,6 +150,9 @@ export default {
             lempList(params).then(res => {
                 if (res.code == 200) {
                     this.lempListData = res.data.list
+                    for (let i = 0; i < 3; i++) {
+                        this.lempListData.push(res.data.list[i])
+                    }
                 }
             })
         },

@@ -35,9 +35,16 @@ export default {
     },
     data() {
         return {
+            lempListDataCopy: [],
             calleft: 0
         }
     },
+    // computed: {
+    //     lempListDataCopy: function() {
+    //         this.lempListData.forEach(item => {})
+    //         return ''
+    //     }
+    // },
     mounted() {
         this.move()
     },
@@ -50,7 +57,7 @@ export default {
         starmove() {
             this.calleft -= 5
             // let a = 4 * 340
-            if (this.calleft < -3 * 340) {
+            if (this.calleft < -6 * 340) {
                 this.calleft = 0
             }
         },
@@ -91,7 +98,7 @@ export default {
 
 .threeImg .Containt ul {
     margin: 0 auto;
-    width: 2400px;
+    width: 3400px;
     position: absolute;
     left: 0px;
     cursor: pointer;

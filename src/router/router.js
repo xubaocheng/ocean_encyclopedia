@@ -91,5 +91,19 @@ export default [
                 }
             }
         ]
+    },
+    {
+        path: '/Test',
+        component: Home,
+        children: [
+            {
+                path: '/Test',
+                name: 'Test',
+                meta: { title: 'Test' },
+                component: resolve => {
+                    require(['@/views/test/Test.vue'], resolve)
+                }
+            }
+        ]
     }
 ]
