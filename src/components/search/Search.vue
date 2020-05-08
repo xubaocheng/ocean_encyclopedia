@@ -88,9 +88,10 @@ export default {
             width: 100%;
             height: 100%;
             padding: 7px 0;
+            outline: 0;
             background: #fff;
             border-radius: 3px;
-            padding-left: 5px;
+            padding-left: 15px;
             -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
             box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
             -webkit-transition: border-color ease-in-out 0.15s,

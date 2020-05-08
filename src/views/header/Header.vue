@@ -15,7 +15,7 @@
         </div>
         <div class="bottom">
             <div class="bottom-nav">
-                <h1>海洋出版社</h1>
+                <h1 @click="handlerToHome">海洋出版社</h1>
                 <div class="bottom-nav-list">
                     <div class="bottom-nav-list-content">
                         <router-link
@@ -73,6 +73,11 @@ export default {
             this.$router.push({
                 path: '/Personal'
             })
+        },
+        handlerToHome() {
+            this.$router.push({
+                path: '/'
+            })
         }
     }
 }
@@ -111,9 +116,11 @@ export default {
             align-items: center;
             height: 80px;
             h1 {
-                width: 255px;
+                width: 185px;
+                height: 40px;
                 text-indent: -999999em;
-                background: url('../../assets/img/logo.png') no-repeat;
+                background: url('../../assets/img/logo.png') no-repeat 100%;
+                cursor: pointer;
             }
             &-list {
                 width: 870px;

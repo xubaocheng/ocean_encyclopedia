@@ -338,6 +338,143 @@ export const hotEntryClassifyRank = opation => {
     }
     return Mock.mock(template)
 }
+
+//问答轮播图
+export const QandAlempList = opation => {
+    const template = {
+        code: 200,
+        data: {
+            list: [
+                {
+                    img: Random.image(
+                        '250x297',
+                        Random.color(),
+                        Random.color(),
+                        '1'
+                    )
+                },
+                {
+                    img: Random.image(
+                        '250x297',
+                        Random.color(),
+                        Random.color(),
+                        '2'
+                    )
+                },
+                {
+                    img: Random.image(
+                        '250x297',
+                        Random.color(),
+                        Random.color(),
+                        '3'
+                    )
+                }
+            ]
+        },
+        message: 'Success'
+    }
+    return Mock.mock(template)
+}
+
+//获取问答侧边分类
+export const QandAclassifyList = opation => {
+    const template = {
+        code: 200,
+        data: {
+            'list|5': [
+                {
+                    id: Mock.mock('@integer(10000)'),
+                    title: Mock.mock('@cword(3, 5)'),
+                    expand: true,
+                    isPurchase: true,
+                    'children|2': [
+                        {
+                            id: Mock.mock('@integer(10000)'),
+                            title: Mock.mock('@cword(3, 5)'),
+                            expand: false,
+                            isPurchase: false,
+                            'children|8': [
+                                {
+                                    id: Mock.mock('@integer(10000)'),
+                                    title: Mock.mock('@cword(3, 5)'),
+                                    expand: false,
+                                    isPurchase: false,
+                                    children: []
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        message: 'Success'
+    }
+    return Mock.mock(template)
+}
+
+//获取热门问答分类
+export const hotQandAClassify = opation => {
+    const template = {
+        code: 200,
+        data: {
+            'list|5': [
+                {
+                    name: '@cword(4)',
+                    content: '@cword(60)',
+                    color: Mock.mock('@color')
+                }
+            ]
+        },
+        message: 'Success'
+    }
+    return Mock.mock(template)
+}
+
+//获取热门问答前十
+export const hotQandAClassifyRank = opation => {
+    let pageIndex = JSON.parse(opation.body).pageIndex
+    let pageSize = JSON.parse(opation.body).pageSize
+    const template = {
+        code: 200,
+        data: {
+            pageIndex: pageIndex,
+            pageSize: pageSize,
+            total: 4444,
+            totalRecords: 66666,
+            list: () => {
+                let arr = []
+                for (let i = 0; i < pageSize; i++) {
+                    if (i === 2 || i === 3 || i === 8) {
+                        arr.push(
+                            Mock.mock({
+                                title: '@ctitle(4,9)',
+                                content: '@csentence(100,240)',
+                                img: '',
+                                headSculpture: Random.image('20x10', '#6fc'),
+                                author: Mock.mock('@cname'),
+                                date: Random.date('yyyy-MM-dd')
+                            })
+                        )
+                    } else {
+                        arr.push(
+                            Mock.mock({
+                                title: '@ctitle(4,9)',
+                                content: '@csentence(60,140)',
+                                img: Random.image('200x100', '#FF6600'),
+                                headSculpture: Random.image('20x10', '#6fc'),
+                                author: Mock.mock('@cname'),
+                                date: Random.date('yyyy-MM-dd')
+                            })
+                        )
+                    }
+                }
+                return arr
+            }
+        },
+        message: 'Success'
+    }
+    return Mock.mock(template)
+}
 //获取推荐问答列表，推荐词条列表 --- 个人中心 默认模块
 export const guessList = opation => {
     // console.log(opation)

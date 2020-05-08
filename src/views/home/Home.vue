@@ -34,8 +34,8 @@ export default {
 <style lang="less" scoped>
 .home {
     width: 100%;
-    // background: url('../../../src/assets/img/login-bg.png') no-repeat;
-    // background-size: cover;
+    background: url('../../../src/assets/img/login-bg.png') no-repeat;
+    background-size: cover;
     .wrapper {
         width: 100%;
         padding-top: 20px;

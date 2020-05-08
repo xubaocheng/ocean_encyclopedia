@@ -17,7 +17,11 @@ import {
     editEctry,
     question,
     answers,
-    news
+    news,
+    QandAlempList,
+    QandAclassifyList,
+    hotQandAClassify,
+    hotQandAClassifyRank
 } from './response/mockData'
 
 const baseUrl2mock =
@@ -44,6 +48,14 @@ Mock.mock(`${baseUrl2mock}/classifyList`, classifyList) //侧边栏分类数据
 Mock.mock(`${baseUrl2mock}/hotEntryClassify`, hotEntryClassify) //热门词条分类数据
 
 Mock.mock(`${baseUrl2mock}/hotEntryClassifyRank`, hotEntryClassifyRank) //热门词条前十
+
+Mock.mock(`${baseUrl2mock}/QandAlempList`, QandAlempList) //跑马灯轮播图图片
+
+Mock.mock(`${baseUrl2mock}/QandAclassifyList`, QandAclassifyList) //侧边栏分类数据
+
+Mock.mock(`${baseUrl2mock}/hotQandAClassify`, hotQandAClassify) //热门词条分类数据
+
+Mock.mock(`${baseUrl2mock}/hotQandAClassifyRank`, hotQandAClassifyRank) //热门词条前十
 
 Mock.mock(`${baseUrl2mock}/guessList`, guessList) //猜你喜欢问答or词条列表
 
