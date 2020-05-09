@@ -28,6 +28,9 @@ router.beforeEach((to, from, next) => {
     store.commit('SET_BROWSERHEADERTITLE', {
         browserHeaderTitle: browserHeaderTitle
     })
+    if (to.name !== 'Personal' && store.state.personalLine) {
+        store.commit('SET_PERSONALLINE', false)
+    }
     next()
 })
 router.afterEach(() => {

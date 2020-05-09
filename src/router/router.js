@@ -71,7 +71,7 @@ export default [
             {
                 path: '/Personal',
                 name: 'Personal',
-                meta: { title: '海洋问答' },
+                meta: { title: '个人中心' },
                 component: resolve => {
                     require(['@/views/personal/Personal.vue'], resolve)
                 }

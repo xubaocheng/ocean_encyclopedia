@@ -29,7 +29,7 @@
                         </router-link>
                     </div>
                 </div>
-                <div class="personal">
+                <div class="personal" :class="{ active: personalLine }">
                     <span @click="goToPersonal"
                         ><i class="ivu-icon ivu-icon-md-person"></i
                         >个人中心</span
@@ -41,6 +41,7 @@
 </template>
 
 <script>
+import { mapGetters, mapMutations } from 'vuex'
 export default {
     name: 'HeaderView',
     components: {},
@@ -62,8 +63,14 @@ export default {
             ]
         }
     },
+    computed: {
+        ...mapGetters(['personalLine'])
+    },
     mounted() {},
     methods: {
+        ...mapMutations({
+            handlerPersonal: 'SET_PERSONALLINE'
+        }),
         goToLogin() {
             this.$router.push({
                 path: '/Login'
@@ -73,6 +80,7 @@ export default {
             this.$router.push({
                 path: '/Personal'
             })
+            this.handlerPersonal(true)
         },
         handlerToHome() {
             this.$router.push({
@@ -162,6 +170,7 @@ export default {
                     margin-right: 10px;
                 }
             }
+            &.active,
             &:hover {
                 border-bottom: 4px solid #f1af63;
                 span {
