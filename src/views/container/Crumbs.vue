@@ -63,7 +63,6 @@ export default {
 .crumbs {
     width: 200px;
     height: 300px;
-    margin-left: 10px;
     background: #fff;
     &-list {
         width: 100%;

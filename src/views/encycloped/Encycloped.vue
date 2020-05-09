@@ -191,6 +191,7 @@ export default {
 <style lang="less" scoped>
 .encycloped {
     width: 1200px;
+    background-color: rgba(242, 242, 242, 1);
     .part1 {
         width: 100%;
         height: 340px;

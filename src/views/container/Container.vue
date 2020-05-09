@@ -287,6 +287,7 @@ export default {
 .container-view {
     width: 1200px;
     margin: 0 auto;
+    background-color: rgba(242, 242, 242, 1);
     .part1 {
         width: 100%;
         display: flex;

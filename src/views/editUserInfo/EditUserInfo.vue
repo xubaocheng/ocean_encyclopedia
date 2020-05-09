@@ -163,9 +163,9 @@ export default {
         handleSubmit(name) {
             this.$refs[name].validate(valid => {
                 if (valid) {
-                    this.$Message.success('Success!')
+                    this.$Message.success('成功')
                 } else {
-                    this.$Message.error('Fail!')
+                    this.$Message.error('失败')
                 }
             })
         },
@@ -213,6 +213,7 @@ export default {
     width: 100%;
     border-top: 6px solid #0e38ae;
     padding: 50px 60px;
+    background: #fff;
     &-info {
         width: 100%;
         &-edit {

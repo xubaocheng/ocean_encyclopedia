@@ -42,7 +42,7 @@
                         type="info"
                         shape="circle"
                         size="large"
-                        >Info</Button
+                        >我要提问</Button
                     >
                 </div>
             </div>
@@ -251,6 +251,7 @@ export default {
 <style lang="less" scoped>
 .oceanQandA {
     width: 1200px;
+    background-color: rgba(242, 242, 242, 1);
     .part1 {
         width: 100%;
         height: 420px;
@@ -343,7 +344,7 @@ export default {
             }
             &-box {
                 width: 100%;
-                padding-top: 20px;
+                padding-top: 40px;
                 margin-left: 50px;
                 &-btn {
                     width: 100px;
