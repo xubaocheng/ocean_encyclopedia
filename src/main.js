@@ -6,8 +6,7 @@ import './assets/css/reset.css'
 import ViewUI from 'view-design'
 import 'view-design/dist/styles/iview.css'
 import './assets/font/iconfont.css'
-// if (process.env.NODE_ENV !== 'production') require('./mock')
-import './mock'
+if (process.env.NODE_ENV !== 'production') require('./mock')
 import { searchModular, hotWord, classify } from './components/index'
 Vue.config.productionTip = false
 Vue.use(ViewUI)
