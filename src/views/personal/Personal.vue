@@ -179,7 +179,8 @@ export default {
                 }
             ],
             tabsBtnCurrentIndex: -1,
-            currentTabComponent: 'PersonalDefault'
+            currentTabComponent: 'PersonalDefault',
+            message: 'Vue的生命周期'
         }
     },
     mounted() {},
@@ -205,7 +206,8 @@ export default {
 </script>
 <style lang="less" scoped>
 .personal {
-    width: 100%;
+    width: 1200px;
+    min-height: 1000px;
     border-top: 6px solid #0e38ae;
     background: #fff;
     &-information {
@@ -231,7 +233,6 @@ export default {
                 }
                 &-photo {
                     width: 100%;
-                    background: yellow;
                     border-radius: 50%;
                     margin-bottom: 10px;
                     img {

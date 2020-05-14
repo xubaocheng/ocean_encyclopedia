@@ -31,6 +31,11 @@ router.beforeEach((to, from, next) => {
     if (to.name !== 'Personal' && store.state.personalLine) {
         store.commit('SET_PERSONALLINE', false)
     }
+    if (to.name === 'Personal') {
+        store.commit('SET_ACSHOW', false)
+    } else {
+        store.commit('SET_ACSHOW', true)
+    }
     next()
 })
 router.afterEach(() => {

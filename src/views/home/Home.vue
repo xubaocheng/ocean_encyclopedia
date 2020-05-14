@@ -3,9 +3,9 @@
         <Header />
         <div class="wrapper">
             <div class="content">
-                <Advert />
+                <Advert v-if="acShow" />
                 <router-view></router-view>
-                <Crumbs />
+                <Crumbs v-if="acShow" />
             </div>
         </div>
         <Footer />
@@ -21,6 +21,7 @@ import Header from '@/views/header/Header.vue'
 import Advert from '@/views/container/Advert'
 import Crumbs from '@/views/container/Crumbs'
 import Footer from '@/views/footer/Footer.vue'
+import { mapGetters } from 'vuex'
 export default {
     name: 'Home',
     components: {
@@ -28,21 +29,26 @@ export default {
         Advert,
         Crumbs,
         Footer
+    },
+    computed: {
+        ...mapGetters(['acShow'])
     }
 }
 </script>
 <style lang="less" scoped>
 .home {
     width: 100%;
-    background: url('../../../src/assets/img/login-bg.png') no-repeat;
-    background-size: cover;
+    background: url('../../../src/assets/img/bj.png') no-repeat;
+    background-color: #fff;
     .wrapper {
         width: 100%;
         padding-top: 20px;
+
         .content {
-            width: 1600px;
+            width: 1200px;
+            position: relative;
             margin: 0 auto;
-            display: flex;
+            // display: flex;
         }
     }
     .top {

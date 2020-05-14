@@ -26,6 +26,9 @@ export default {
     width: 200px;
     height: 300px;
     background: orange;
+    position: absolute;
+    left: -200px;
+    top: 0;
     &-one {
         width: 100%;
         height: 300px;

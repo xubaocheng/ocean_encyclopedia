@@ -64,6 +64,9 @@ export default {
     width: 200px;
     height: 300px;
     background: #fff;
+    position: absolute;
+    right: -200px;
+    top: 0;
     &-list {
         width: 100%;
         &-item {

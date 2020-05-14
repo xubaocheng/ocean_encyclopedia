@@ -8,6 +8,9 @@ const mutations = {
     },
     [types.SET_PERSONALLINE](state, boolean) {
         state.personalLine = boolean
+    },
+    [types.SET_ACSHOW](state, boolean) {
+        state.acShow = boolean
     }
 }
 
