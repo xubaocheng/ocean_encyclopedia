@@ -51,7 +51,8 @@ export const hotword = opation => {
         data: {
             'list|6': [
                 {
-                    name: '@cword(3, 5)'
+                    name: '@cword(3, 5)',
+                    'value|1-100': 100
                 }
             ]
         },

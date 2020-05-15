@@ -62,9 +62,9 @@
             </div>
         </div>
         <div class="part2">
-            <hotWord :hotwordList="hotwordList"></hotWord>
+            <hotCloud :hotwordList="hotwordList"></hotCloud>
             <searchModular></searchModular>
-            <hotWord :hotwordList="hotwordList"></hotWord>
+            <hotCloud :hotwordList="hotwordList"></hotCloud>
         </div>
         <div class="part3"></div>
         <div class="part4">
@@ -263,7 +263,7 @@ export default {
                 pageSize: pageSize
             }
             informationList(params).then(res => {
-                console.log(res)
+                // console.log(res)
                 if (res.code == 200) {
                     this.informationListData = res.data.list
                 }

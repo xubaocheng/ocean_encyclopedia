@@ -7,11 +7,12 @@ import ViewUI from 'view-design'
 import 'view-design/dist/styles/iview.css'
 import './assets/font/iconfont.css'
 if (process.env.NODE_ENV !== 'production') require('./mock')
-import { searchModular, hotWord, classify } from './components/index'
+import { searchModular, hotWord, classify, hotCloud } from './components/index'
 Vue.config.productionTip = false
 Vue.use(ViewUI)
 Vue.use(searchModular)
 Vue.use(hotWord)
+Vue.use(hotCloud)
 Vue.use(classify)
 new Vue({
     router,
