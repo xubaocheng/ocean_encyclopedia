@@ -62,9 +62,9 @@
             </div>
         </div>
         <div class="part2">
-            <hotCloud :hotwordList="hotwordList"></hotCloud>
+            <hotCloud :defaultWords="defaultWords"></hotCloud>
             <searchModular></searchModular>
-            <hotCloud :hotwordList="hotwordList"></hotCloud>
+            <hotCloud :defaultWords="hotwordList"></hotCloud>
         </div>
         <div class="part3"></div>
         <div class="part4">
@@ -186,20 +186,60 @@ export default {
             },
             recommendedEntryList: [],
             recommendedQandAList: [],
-            hotwordList: [],
+
             hotEntryList: [],
             hotQandAList: [],
             pageIndex: 1,
             pageSize: 4,
             total: 0,
             moreStatus: '向下加载更多',
-            informationListData: []
+            informationListData: [],
+            defaultWords: [
+                {
+                    name: 'Cat',
+                    value: 26
+                },
+                {
+                    name: 'fish',
+                    value: 19
+                },
+                {
+                    name: 'things',
+                    value: 18
+                },
+                {
+                    name: 'look',
+                    value: 16
+                },
+                {
+                    name: 'two',
+                    value: 15
+                },
+                {
+                    name: 'fun',
+                    value: 9
+                },
+                {
+                    name: 'know',
+                    value: 9
+                },
+                {
+                    name: 'good',
+                    value: 9
+                },
+                {
+                    name: 'play',
+                    value: 6
+                }
+            ],
+            hotwordList: []
         }
     },
     mounted() {
         this.getRecommendedEntry()
         this.getRecommendedQandA()
         this.getHotword()
+        this.getHotword2()
         this.getHotEntry()
         this.getHotQandA()
         this.getInformationList(this.pageIndex, this.pageSize)
@@ -225,6 +265,17 @@ export default {
             })
         },
         getHotword() {
+            let params = {
+                pageIndex: 1,
+                pageSize: 3
+            }
+            hotword(params).then(res => {
+                if (res.code == 200) {
+                    this.defaultWords = res.data.list
+                }
+            })
+        },
+        getHotword2() {
             let params = {
                 pageIndex: 1,
                 pageSize: 3
