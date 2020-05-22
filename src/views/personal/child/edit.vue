@@ -86,7 +86,7 @@ export default {
                 },
                 {
                     title: '我编辑的版本',
-                    key: 'version'
+                    key: 'versionEdit'
                 }
             ],
             tableData: [],

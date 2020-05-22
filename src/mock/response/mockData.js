@@ -618,12 +618,13 @@ export const editEctry = opation => {
             'list|10': [
                 {
                     entryName: '@cword(2,4)', //词条名称
-                    'version|3': /\d{5}/, //版本号
+                    version: /\d{19}/, //版本号
                     submitTime: Mock.mock('@date'), //提交时间
                     preserveTime: Mock.mock('@date'), //保存时间
                     examineTime: Mock.mock('@date'), // 审核时间
                     adoptTime: Mock.mock('@date'), // 通过时间
-                    failReason: '@cword(6,10)' //未通过原因
+                    failReason: '@cword(6,10)', //未通过原因
+                    versionEdit: /\d{19}/ //我编辑的版本
                 }
             ]
         },
@@ -673,7 +674,7 @@ export const answers = opation => {
             'list|10': [
                 {
                     title: '@cword(6,14)', //标题
-                    'version|3': /\d{5}/, //版本号
+                    content: '@cword(10,20)', //回答内容
                     adoptTime: Mock.mock('@date'), // 通过时间 --- 采纳时间
                     delReason: '@cword(6,10)', //删除原因
                     delTime: Mock.mock('@date'), //删除时间

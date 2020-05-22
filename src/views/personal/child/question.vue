@@ -70,9 +70,6 @@ export default {
                     name: '未通过'
                 },
                 {
-                    name: '已删除'
-                },
-                {
                     name: '草稿箱'
                 }
             ],
@@ -81,10 +78,6 @@ export default {
                 {
                     title: '标题',
                     key: 'title'
-                },
-                {
-                    title: '版本号',
-                    key: 'version'
                 },
                 {
                     title: '提交时间',
@@ -139,10 +132,6 @@ export default {
                             key: 'title'
                         },
                         {
-                            title: '版本号',
-                            key: 'version'
-                        },
-                        {
                             title: '提交时间',
                             key: 'submitTime'
                         }
@@ -155,10 +144,6 @@ export default {
                             key: 'title'
                         },
                         {
-                            title: '版本号',
-                            key: 'version'
-                        },
-                        {
                             title: '审核时间',
                             key: 'examineTime'
                         }
@@ -169,10 +154,6 @@ export default {
                         {
                             title: '标题',
                             key: 'title'
-                        },
-                        {
-                            title: '版本号',
-                            key: 'version'
                         },
                         {
                             title: '解答时间',
@@ -194,10 +175,6 @@ export default {
                         {
                             title: '未通过原因',
                             key: 'failReason'
-                        },
-                        {
-                            title: '版本号',
-                            key: 'version'
                         },
                         {
                             title: '提交时间',
@@ -245,22 +222,6 @@ export default {
                     ]
                     break
                 case 4:
-                    this.tableHeader = [
-                        {
-                            title: '标题',
-                            key: 'title'
-                        },
-                        {
-                            title: '版本号',
-                            key: 'version'
-                        },
-                        {
-                            title: '删除时间',
-                            key: 'delTime'
-                        }
-                    ]
-                    break
-                case 5:
                     this.tableHeader = [
                         {
                             type: 'selection',
@@ -315,20 +276,12 @@ export default {
                 default:
                     this.tableHeader = [
                         {
-                            title: '词条名称',
-                            key: 'entryName'
+                            title: '标题',
+                            key: 'title'
                         },
                         {
-                            title: '版本号',
-                            key: 'version'
-                        },
-                        {
-                            title: '通过时间',
-                            key: 'adoptTime'
-                        },
-                        {
-                            title: '被他人修改版本',
-                            key: 'versionArr'
+                            title: '提交时间',
+                            key: 'submitTime'
                         }
                     ]
             }

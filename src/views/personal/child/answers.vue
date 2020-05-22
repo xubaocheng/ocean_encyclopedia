@@ -21,10 +21,7 @@
                 @on-select-all-cancel="selectAllFn(false)"
             >
             </Table>
-            <div
-                class="table-box-btnGroup"
-                v-if="tabsCurrentIndex == 1 || tabsCurrentIndex == 2"
-            >
+            <div class="table-box-btnGroup" v-if="tabsCurrentIndex == 2">
                 <Button
                     type="primary"
                     class="table-box-btnGroup-btn"
@@ -61,7 +58,7 @@ export default {
                     name: '被采纳'
                 },
                 {
-                    name: '被删除'
+                    name: '审核通过'
                 },
                 {
                     name: '未通过'
@@ -77,8 +74,8 @@ export default {
                     key: 'title'
                 },
                 {
-                    title: '版本号',
-                    key: 'version'
+                    title: '回答内容',
+                    key: 'content'
                 },
                 {
                     title: '采纳时间',
@@ -104,7 +101,7 @@ export default {
             this.selectStatus = false
             this.$refs.selection.selectAll(this.selectStatus)
             this.pageIndex = 1
-            this.handlerPage()
+            this.getAnswers()
             // console.log(item)
         },
         //获取已通过版本表格数据
@@ -132,8 +129,8 @@ export default {
                             key: 'title'
                         },
                         {
-                            title: '版本号',
-                            key: 'version'
+                            title: '回答内容',
+                            key: 'content'
                         },
                         {
                             title: '采纳时间',
@@ -144,60 +141,16 @@ export default {
                 case 1:
                     this.tableHeader = [
                         {
-                            type: 'selection',
-                            width: 60,
-                            align: 'center'
-                        },
-                        {
                             title: '标题',
                             key: 'title'
                         },
                         {
-                            title: '删除原因',
-                            key: 'delReason'
+                            title: '回答内容',
+                            key: 'content'
                         },
                         {
-                            title: '版本号',
-                            key: 'version'
-                        },
-                        {
-                            title: '删除时间',
-                            key: 'delTime'
-                        },
-                        {
-                            title: '操作',
-                            key: 'action',
-                            render: (h, params) => {
-                                console.log(params)
-                                return h('div', [
-                                    h(
-                                        'Button',
-                                        {
-                                            props: {
-                                                type: 'text',
-                                                size: 'small'
-                                            },
-                                            style: {
-                                                color: '#28c4f7'
-                                            }
-                                        },
-                                        '删除'
-                                    ),
-                                    h(
-                                        'Button',
-                                        {
-                                            props: {
-                                                type: 'text',
-                                                size: 'small'
-                                            },
-                                            style: {
-                                                color: '#28c4f7'
-                                            }
-                                        },
-                                        '编辑'
-                                    )
-                                ])
-                            }
+                            title: '通过时间',
+                            key: 'adoptTime'
                         }
                     ]
                     break
@@ -211,6 +164,10 @@ export default {
                         {
                             title: '标题',
                             key: 'title'
+                        },
+                        {
+                            title: '回答内容',
+                            key: 'content'
                         },
                         {
                             title: '未通过原因',
@@ -268,8 +225,8 @@ export default {
                             key: 'title'
                         },
                         {
-                            title: '版本号',
-                            key: 'version'
+                            title: '回答内容',
+                            key: 'content'
                         },
                         {
                             title: '提交时间',
@@ -284,8 +241,8 @@ export default {
                             key: 'title'
                         },
                         {
-                            title: '版本号',
-                            key: 'version'
+                            title: '回答内容',
+                            key: 'content'
                         },
                         {
                             title: '采纳时间',
