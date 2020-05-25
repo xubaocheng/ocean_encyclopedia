@@ -24,7 +24,7 @@
                             size="24"
                         />
                     </div>
-                    <transition name="fade">
+                    <!-- <transition name="fade">
                         <div
                             class="classify-menu-item-three"
                             v-show="itemTwo.expand"
@@ -35,7 +35,19 @@
                                 >三级分类{{ itemThree.title }}</span
                             >
                         </div>
-                    </transition>
+                    </transition> -->
+                    <collapse-transition>
+                        <div
+                            class="classify-menu-item-three"
+                            v-show="itemTwo.expand"
+                        >
+                            <span
+                                v-for="(itemThree, j) in itemTwo.children"
+                                :key="`itemThree_${j}`"
+                                >三级分类{{ itemThree.title }}</span
+                            >
+                        </div>
+                    </collapse-transition>
                 </div>
             </div>
         </div>
@@ -43,9 +55,12 @@
 </template>
 
 <script>
+import collapseTransition from '../../lib/collapse'
 export default {
     name: 'Classify',
-    components: {},
+    components: {
+        collapseTransition
+    },
     props: {
         classifyListData: {
             type: Array,
@@ -105,20 +120,20 @@ export default {
                         line-height: 30px;
                     }
                 }
-                .fade-leave-active,
-                .fade-enter-active {
-                    transition: all 1s ease;
-                }
-                .fade-leave-active,
-                .fade-enter {
-                    height: 0px;
-                    opacity: 0;
-                }
-                .fade-leave,
-                .fade-enter-active {
-                    height: 100px;
-                    opacity: 1;
-                }
+                // .fade-leave-active,
+                // .fade-enter-active {
+                //     transition: all 1s ease;
+                // }
+                // .fade-enter,
+                // .fade-leave-active {
+                //     height: 0px;
+                //     opacity: 0;
+                // }
+                // .fade-leave,
+                // .fade-enter-active {
+                //     height: 100px;
+                //     opacity: 1;
+                // }
                 .classify-menu-item-three {
                     width: 100%;
                     font-size: 12px;
