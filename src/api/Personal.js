@@ -30,7 +30,7 @@ export const editEctry = params => {
     })
 }
 
-//提问
+//我的提问
 export const question = params => {
     return axios.request({
         url: `${publicUrl}/question`,
@@ -40,7 +40,7 @@ export const question = params => {
     })
 }
 
-//提问
+//我的回答
 export const answers = params => {
     return axios.request({
         url: `${publicUrl}/answers`,

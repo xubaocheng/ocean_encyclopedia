@@ -336,7 +336,7 @@ export default {
 </script>
 <style lang="less" scoped>
 .container-view {
-    width: 1200px;
+    // width: 1200px;
     margin: 0 auto;
     background-color: rgba(242, 242, 242, 1);
     .part1 {

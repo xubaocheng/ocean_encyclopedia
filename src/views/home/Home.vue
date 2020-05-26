@@ -43,9 +43,9 @@ export default {
     .wrapper {
         width: 100%;
         padding-top: 20px;
-
         .content {
-            width: 1200px;
+            width: 100%;
+            max-width: 1200px;
             position: relative;
             margin: 0 auto;
             // display: flex;

@@ -206,7 +206,7 @@ export default {
 </script>
 <style lang="less" scoped>
 .personal {
-    width: 1200px;
+    // width: 1200px;
     min-height: 1000px;
     border-top: 6px solid #0e38ae;
     background: #fff;

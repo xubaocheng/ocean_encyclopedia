@@ -210,7 +210,7 @@ export default {
 </script>
 <style lang="less" scoped>
 .user {
-    width: 1200px;
+    // width: 1200px;
     border-top: 6px solid #0e38ae;
     padding: 50px 60px;
     background: #fff;

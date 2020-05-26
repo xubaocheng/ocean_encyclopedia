@@ -190,7 +190,7 @@ export default {
 </script>
 <style lang="less" scoped>
 .encycloped {
-    width: 1200px;
+    // width: 1200px;
     background-color: rgba(242, 242, 242, 1);
     .part1 {
         width: 100%;
